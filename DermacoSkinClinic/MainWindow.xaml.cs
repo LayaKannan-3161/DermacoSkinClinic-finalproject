@@ -74,6 +74,11 @@ namespace DermacoSkinClinic
             EmailSubscriptionCheckBox.IsChecked = false;
             TermsCheckBox.IsChecked = false;
         }
+
+        private void AppointmentTimeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
     public class Appointment
