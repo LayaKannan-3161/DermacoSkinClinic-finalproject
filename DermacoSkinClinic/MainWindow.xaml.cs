@@ -20,20 +20,58 @@ namespace DermacoSkinClinic
         private void SubmitAppointment_Click(object sender, RoutedEventArgs e)
         {
             string firstName = FirstNameTextBox.Text;
+            string lastName = LastNameTextBox.Text;
+            string email = EmailTextBox.Text;
+            string Comments = CommentsTextBox.Text;
+            string selectedTime = AppointmentTimeComboBox.Text;
+            //ComboBoxItem selectedItem = AppointmentTimeComboBox.SelectedItem as ComboBoxItem;
+
+            //  DateTime appointDate = AppointmentDateTimePicker.SelectedDate;
             // Continue retrieving data for other controls (LastNameTextBox, EmailTextBox, AppointmentDatePicker, AppointmentTimePicker)
 
             // Create a new Appointment object with the captured data
             Appointment newAppointment = new Appointment
             {
                 FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                Comments = Comments,
+                AppointmentDate = (DateTime)AppointmentDateTimePicker.SelectedDate,
+                AppointmentTime = selectedTime,
+                //AppointmentTime = (TimeSpan)AppointmentTimeComboBox.SelectedItem,
                 // Set other properties...
             };
+
 
             // Add the new appointment to the ObservableCollection
             Appointments.Add(newAppointment);
 
             // Clear form fields
             ClearFormFields();
+        }
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Clear the text in the textboxes
+            FirstNameTextBox.Text = string.Empty;
+            LastNameTextBox.Text = string.Empty;
+            EmailTextBox.Text = string.Empty;
+            PhoneTextBox.Text = string.Empty;
+            PostalCodeTextBox.Text = string.Empty;
+            CommentsTextBox.Text = string.Empty;
+            ProcedureComboBox.SelectedIndex = -1;
+            EmailContactCheckBox.IsChecked = false;
+            PhoneContactCheckBox.IsChecked = false;
+            DOBDatePicker.SelectedDate = null;
+            AppointmentTimeComboBox.SelectedIndex = -1;
+            EmailSubscriptionCheckBox.IsChecked = false;
+            TermsCheckBox.IsChecked = false;
+            AppointmentDateTimePicker.SelectedDate = null;
+            // EmailSubscriptionCheckBox.IsEnabled; 
+            //TermsCheckBox.
+            //  AppointmentDataGrid
+
+
+
         }
 
         private void ApplyFilter_Click(object sender, RoutedEventArgs e)
@@ -67,6 +105,13 @@ namespace DermacoSkinClinic
         private void ClearFormFields()
         {
             FirstNameTextBox.Clear();
+            LastNameTextBox.Clear();
+            EmailTextBox.Clear();
+            PhoneTextBox.Clear();
+            PostalCodeTextBox.Clear();
+            DOBDatePicker.SelectedDate = null;
+            EmailContactCheckBox.IsChecked = false;
+            ProcedureComboBox.SelectedIndex = -1;
             // Clear other form fields...
             AppointmentDateTimePicker.SelectedDate = null;
             AppointmentTimeComboBox.SelectedIndex = -1;
@@ -88,7 +133,7 @@ namespace DermacoSkinClinic
         public string Email { get; set; } = string.Empty;
         public string Comments { get; set; } = string.Empty;
         public DateTime AppointmentDate { get; set; }
-        public TimeSpan AppointmentTime { get; set; }
+        public string AppointmentTime { get; set; }
         public bool IsEmailSubscriptionEnabled { get; set; }
         public bool IsTermsAccepted { get; set; }
         public DateTime AppointmentDateTime { get; set; }

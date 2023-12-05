@@ -36,6 +36,7 @@
                 <TextBlock Width="197" Text="Phone:"/>
                 <TextBox x:Name="PhoneTextBox" Width="200" Margin="5,0,0,0"/>
                 <TextBlock Width="194" Text="Contact Preference:"/>
+
                 <CheckBox Content="Email" x:Name="EmailContactCheckBox" Width="56"/>
                 <CheckBox Content="Phone" x:Name="PhoneContactCheckBox" Width="57"/>
 
@@ -92,7 +93,9 @@
                     <ComboBoxItem Content="Filter by Email"/>
                 </ComboBox>
                 <Button Content="Apply Filter" Click="ApplyFilter_Click" />
-                <Button Content="Clear Filter" Click="ClearFilter_Click" Grid.Column="3" Margin="5,0,0,0"/>
+                <!--<Button Content="Clear Filter" Click="ClearButton_Click" Grid.Column="3" Margin="5,0,0,0"/>-->
+                <Button Content="Clear" Click="ClearButton_Click"/>
+
                 <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True"/>
             </StackPanel>
         </Grid>
