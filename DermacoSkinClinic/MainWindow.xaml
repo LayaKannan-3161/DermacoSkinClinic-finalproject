@@ -8,12 +8,16 @@
 
     <ScrollViewer Background="{StaticResource BackgroundBrush}">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130*"/>
+                <ColumnDefinition Width="573*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="100*"/>
             </Grid.RowDefinitions>
             <!-- Customer Information Section -->
-            <StackPanel Margin="5,-6,15,-115" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
+            <StackPanel Margin="5,-6,15,-115" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Grid.ColumnSpan="2">
                 <StackPanel.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -22,7 +26,7 @@
                         <TranslateTransform X="0.499"/>
                     </TransformGroup>
                 </StackPanel.RenderTransform>
-                <TextBlock FontWeight="Bold" Margin="0,0,0,5"><Run Text="Customer Information:"/></TextBlock>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,5" Text=""/>
 
                 <TextBlock Width="193" Text="First Name:" Height="18"/>
                 <TextBox x:Name="FirstNameTextBox" Width="200" Margin="5,0,0,0"/>
@@ -57,8 +61,9 @@
                 </ComboBox>
 
 
-                <TextBlock Width="100" Text="Appointment Date and Time:" VerticalAlignment="Center"/>
+                <TextBlock Width="100" Text="Appointment Date:" VerticalAlignment="Center"/>
                 <DatePicker x:Name="AppointmentDateTimePicker" Width="120" Margin="5,0,0,0"/>
+                <TextBlock Width="100" Text="Appointment Time:" VerticalAlignment="Center"/>
                 <ComboBox x:Name="AppointmentTimeComboBox" Width="80" Margin="5,0,0,0">
                     <ComboBoxItem Content="10:00 AM"/>
                     <ComboBoxItem Content="11:00 AM"/>
@@ -74,10 +79,11 @@
                 <CheckBox x:Name="TermsCheckBox" Content="By checking this box, you agree to the Terms of Use."/>
 
                 <Button Content="Submit Appointment" Click="SubmitAppointment_Click"/>
+                <Button Content="Clear Fileds" Click="ClearButton_Click"/>
             </StackPanel>
 
             <!-- Search and Filter Section -->
-            <StackPanel Margin="30,595,38,10" Grid.Row="1">
+            <StackPanel Margin="30,595,38,10" Grid.Row="1" Grid.ColumnSpan="2">
                 <TextBlock FontWeight="Bold" Margin="0,0,0,5" Height="31" Width="630"><Run Text="Search and Filter:"/></TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -94,7 +100,7 @@
                 </ComboBox>
                 <Button Content="Apply Filter" Click="ApplyFilter_Click" />
                 <!--<Button Content="Clear Filter" Click="ClearButton_Click" Grid.Column="3" Margin="5,0,0,0"/>-->
-                <Button Content="Clear" Click="ClearButton_Click"/>
+                <Button Content="Clear Filter" Click="ClearFilter_Click" />
 
                 <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True"/>
             </StackPanel>

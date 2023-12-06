@@ -124,6 +124,11 @@ namespace DermacoSkinClinic
         {
 
         }
+
+        private void ClearFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class Appointment
