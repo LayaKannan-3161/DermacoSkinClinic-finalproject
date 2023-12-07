@@ -22,15 +22,44 @@ namespace DermacoSkinClinic
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
             string email = EmailTextBox.Text;
+            string phone = PhoneTextBox.Text;
             string Comments = CommentsTextBox.Text;
-            string selectedTime = AppointmentTimeComboBox.Text;
-            //ComboBoxItem selectedItem = AppointmentTimeComboBox.SelectedItem as ComboBoxItem;
+            string selectedTime = AppointmentTimeComboBox.Text
+            // Validate first name
+            if (string.IsNullOrWhiteSpace(firstName) || !IsValidName(firstName))
+            {
+                MessageBox.Show("Please enter a valid first name.", "Invalid First Name", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            //  DateTime appointDate = AppointmentDateTimePicker.SelectedDate;
-            // Continue retrieving data for other controls (LastNameTextBox, EmailTextBox, AppointmentDatePicker, AppointmentTimePicker)
+            // Validate last name
+            if (string.IsNullOrWhiteSpace(lastName) || !IsValidName(lastName))
+            {
+                MessageBox.Show("Please enter a valid last name.", "Invalid Last Name", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            // Validate email
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (!IsValidPhoneNumber(phone))
+            {
+                MessageBox.Show("Please enter a valid Canadian phone number.", "Invalid Phone Number", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (!TermsCheckBox.IsChecked.GetValueOrDefault())
+            {
+                MessageBox.Show("Please accept the terms and conditions.", "Terms and Conditions", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+                //ComboBoxItem selectedItem = AppointmentTimeComboBox.SelectedItem as ComboBoxItem;
 
-            // Create a new Appointment object with the captured data
-            Appointment newAppointment = new Appointment
+                //  DateTime appointDate = AppointmentDateTimePicker.SelectedDate;
+                // Continue retrieving data for other controls (LastNameTextBox, EmailTextBox, AppointmentDatePicker, AppointmentTimePicker)
+
+                // Create a new Appointment object with the captured data
+                Appointment newAppointment = new Appointment
             {
                 FirstName = firstName,
                 LastName = lastName,
@@ -49,7 +78,32 @@ namespace DermacoSkinClinic
             // Clear form fields
             ClearFormFields();
         }
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
+
+            private bool IsValidEmail(string email)
+            {
+                try
+                {
+                    var mailAddress = new System.Net.Mail.MailAddress(email);
+                    return mailAddress.Address == email;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            private bool IsValidName(string name)
+            {
+                return name.All(char.IsLetter);
+            }
+            private bool IsValidPhoneNumber(string phoneNumber)
+            {
+                // Remove non-digit characters from the phone number
+                string cleanedNumber = new string(phoneNumber.Where(char.IsDigit).ToArray());
+
+                // Validate the cleaned number against the Canadian phone number pattern eg (123) 456-7890
+                return System.Text.RegularExpressions.Regex.IsMatch(cleanedNumber, @"^(\d{10}|\(\d{3}\)\s?\d{3}[-\.\s]?\d{4}|\d{3}[-\.\s]?\d{4})$");
+            }
+            private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear the text in the textboxes
             FirstNameTextBox.Text = string.Empty;
