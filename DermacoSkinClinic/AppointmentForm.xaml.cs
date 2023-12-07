@@ -129,6 +129,16 @@ namespace DermacoSkinClinic
         {
 
         }
+
+        private void TermsCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TermsCheckBox_Checked_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class Appointment

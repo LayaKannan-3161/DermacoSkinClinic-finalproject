@@ -6,104 +6,155 @@
         <ImageBrush x:Key="BackgroundBrush" ImageSource="/DermacoSkinClinic;component/dermaco_background_image.jpg"/>
     </Window.Resources>
 
-    <ScrollViewer Background="{StaticResource BackgroundBrush}">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="130*"/>
-                <ColumnDefinition Width="573*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="100*"/>
-            </Grid.RowDefinitions>
-            <!-- Customer Information Section -->
-            <StackPanel Margin="5,-6,15,-115" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                <StackPanel.RenderTransform>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Input Section -->
+        <StackPanel Margin="5" Grid.Column="0">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+            </StackPanel.Background>
+            <TextBlock FontWeight="Bold" Margin="0,0,0,5" Text="Customer Information:"/>
+            <!-- First Name -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Width="100" Text="First Name:" Height="23" VerticalAlignment="Center"/>
+                <TextBox x:Name="FirstNameTextBox" Grid.Column="1" Width="200" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+
+            <!-- Last Name -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Width="100" Text="Last Name:" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="LastNameTextBox" Grid.Column="1" Width="200" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+            <!-- Email -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Width="100" Text="Email:" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="EmailTextBox" Grid.Column="1" Width="200" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+
+            <!-- Phone -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Width="100" Text="Phone:" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="PhoneTextBox" Grid.Column="1" Width="200" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+
+            <!-- Contact Preference -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Width="100" Text="Contact Preference:" Height="25" VerticalAlignment="Center"/>
+                <CheckBox Content="Email" x:Name="EmailContactCheckBox" Grid.Column="1" Height="25" Grid.ColumnSpan="2" Margin="10,0,30,0"/>
+                <CheckBox Content="Phone" x:Name="PhoneContactCheckBox" Grid.Column="2" Width="100" Height="25"/>
+            </Grid>
+            <!-- Postal Code -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Width="100" Text="Postal Code:" Height="25" VerticalAlignment="Center"/>
+                <TextBox x:Name="PostalCodeTextBox" Grid.Column="1" Width="200" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+
+            <!-- Date of Birth -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Width="100" Text="Date of Birth:" Height="25" VerticalAlignment="Center"/>
+                <DatePicker x:Name="DOBDatePicker" Grid.Column="1" Width="200" Height="25" Margin="5,0,0,0"/>
+            </Grid>
+
+            <TextBlock Width="225" Text="Procedure Interest:" Height="25" HorizontalAlignment="Left"/>
+            <ComboBox x:Name="ProcedureComboBox" Width="200" Height="25">
+                <ComboBoxItem Content="Laser Hair Removal"/>
+                <ComboBoxItem Content="Laser Skin Whitening"/>
+                <ComboBoxItem Content="PNP Hair Treatment"/>
+                <ComboBoxItem Content="Chemical Peel"/>
+                <ComboBoxItem Content="Consultation"/>
+            </ComboBox>
+
+            <TextBlock Width="222" Text="Appointment Date:" Height="25" HorizontalAlignment="Left"/>
+            <DatePicker x:Name="AppointmentDateTimePicker" Width="200" Margin="5,0,0,0" Height="25"/>
+            <TextBlock Width="225" Text="Appointment Time:" RenderTransformOrigin="0.5,0.5" Height="25" HorizontalAlignment="Left">
+                <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
-                        <SkewTransform AngleX="-0.061"/>
+                        <SkewTransform AngleX="3.187"/>
                         <RotateTransform/>
-                        <TranslateTransform X="0.499"/>
+                        <TranslateTransform X="0.444"/>
                     </TransformGroup>
-                </StackPanel.RenderTransform>
-                <TextBlock FontWeight="Bold" Margin="0,0,0,5" Text=""/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <ComboBox x:Name="AppointmentTimeComboBox" Width="222" Height="25">
+                <ComboBoxItem Content="10:00 AM"/>
+                <ComboBoxItem Content="11:00 AM"/>
+            </ComboBox>
 
-                <TextBlock Width="193" Text="First Name:" Height="18"/>
-                <TextBox x:Name="FirstNameTextBox" Width="200" Margin="5,0,0,0"/>
+            <TextBlock Width="220" Text="Comments:" Height="25" HorizontalAlignment="Left"/>
+            <TextBox x:Name="CommentsTextBox" Width="214" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="100" UndoLimit="90"/>
+            <CheckBox x:Name="EmailSubscriptionCheckBox" Content="Email me news and special offers" Height="25"/>
+            <CheckBox x:Name="TermsCheckBox" Height="50" Checked="TermsCheckBox_Checked_1">
+                <CheckBox.Content>
+                    <TextBlock TextWrapping="Wrap">
+            By checking this box, you agree to the Terms of Use.
+                    </TextBlock>
+                </CheckBox.Content>
+                <CheckBox.Background>
+                    <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+                </CheckBox.Background>
+            </CheckBox>
 
-                <TextBlock Width="193" Text="Last Name:" Height="28"/>
-                <TextBox x:Name="LastNameTextBox" Width="200" Margin="5,0,0,0"/>
-
-                <TextBlock Width="202" Text="Email:"/>
-                <TextBox x:Name="EmailTextBox" Width="200" Margin="5,0,0,0"/>
-
-                <TextBlock Width="197" Text="Phone:"/>
-                <TextBox x:Name="PhoneTextBox" Width="200" Margin="5,0,0,0"/>
-                <TextBlock Width="194" Text="Contact Preference:"/>
-
-                <CheckBox Content="Email" x:Name="EmailContactCheckBox" Width="56"/>
-                <CheckBox Content="Phone" x:Name="PhoneContactCheckBox" Width="57"/>
-
-
-                <TextBlock Width="100" Text="Postal Code:" VerticalAlignment="Center"/>
-                <TextBox x:Name="PostalCodeTextBox" Width="200" Margin="5,0,0,0"/>
-
-                <TextBlock Width="100" Text="Date of Birth:" VerticalAlignment="Center"/>
-                <DatePicker x:Name="DOBDatePicker" Width="200" Margin="5,0,0,0"/>
-
-                <TextBlock Width="100" Text="Procedure Interest:" VerticalAlignment="Center"/>
-                <ComboBox x:Name="ProcedureComboBox" Width="200" Margin="5,0,0,0">
-                    <ComboBoxItem Content="Laser Hair Removal"/>
-                    <ComboBoxItem Content="Laser Skin Whitening"/>
-                    <ComboBoxItem Content="PNP Hair Treatment"/>
-                    <ComboBoxItem Content="Chemical Peel"/>
-                    <ComboBoxItem Content="Consultation"/>
-                </ComboBox>
+            <Button Content="Submit Appointment" Click="SubmitAppointment_Click" Height="25"/>
+            <Button Content="Clear Fields" Click="ClearButton_Click" Height="26"/>
+        </StackPanel>
 
 
-                <TextBlock Width="100" Text="Appointment Date:" VerticalAlignment="Center"/>
-                <DatePicker x:Name="AppointmentDateTimePicker" Width="120" Margin="5,0,0,0"/>
-                <TextBlock Width="100" Text="Appointment Time:" VerticalAlignment="Center"/>
-                <ComboBox x:Name="AppointmentTimeComboBox" Width="80" Margin="5,0,0,0">
-                    <ComboBoxItem Content="10:00 AM"/>
-                    <ComboBoxItem Content="11:00 AM"/>
-                </ComboBox>
-
-                <TextBlock Width="100" Text="Comments:" VerticalAlignment="Top"/>
-                <TextBox x:Name="CommentsTextBox" Width="380" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="100" Margin="5,0,0,0" UndoLimit="90"/>
-
-
-
-                <CheckBox x:Name="EmailSubscriptionCheckBox" Content="Email me news and special offers" VerticalAlignment="Center"/>
-
-                <CheckBox x:Name="TermsCheckBox" Content="By checking this box, you agree to the Terms of Use."/>
-
-                <Button Content="Submit Appointment" Click="SubmitAppointment_Click"/>
-                <Button Content="Clear Fields" Click="ClearButton_Click"/>
-            </StackPanel>
-
-            <!-- Search and Filter Section -->
-            <StackPanel Margin="30,595,38,10" Grid.Row="1" Grid.ColumnSpan="2">
-                <TextBlock FontWeight="Bold" Margin="0,0,0,5" Height="31" Width="630"><Run Text="Search and Filter:"/></TextBlock>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="6*"/>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="24*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="YourPlaceholderTextHere" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="SearchTextBox" VerticalAlignment="Center" Grid.ColumnSpan="3" />
-                </Grid>
-                <ComboBox x:Name="FilterComboBox" Margin="0,0,0,5">
-                    <ComboBoxItem Content="Filter by Name"/>
-                    <ComboBoxItem Content="Filter by Email"/>
-                </ComboBox>
-                <Button Content="Apply Filter" Click="ApplyFilter_Click" />
-                <!--<Button Content="Clear Filter" Click="ClearButton_Click" Grid.Column="3" Margin="5,0,0,0"/>-->
-                <Button Content="Clear Filter" Click="ClearFilter_Click" />
-
-                <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True"/>
-            </StackPanel>
-        </Grid>
-    </ScrollViewer>
+        <!-- Search and Filter Section -->
+        <StackPanel Margin="5" Grid.Column="1" RenderTransformOrigin="-0.043,0.488">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+            </StackPanel.Background>
+            <TextBlock FontWeight="Bold" Margin="0,0,0,5" Height="31" Width="630"><Run Text="Search and Filter:"/></TextBlock>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="24*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="YourPlaceholderTextHere" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="SearchTextBox" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="18" />
+            </Grid>
+            <ComboBox x:Name="FilterComboBox" Margin="0,0,0,5" Height="30">
+                <ComboBoxItem Content="Filter by Name"/>
+                <ComboBoxItem Content="Filter by Email"/>
+            </ComboBox>
+            <Button Content="Apply Filter" Click="ApplyFilter_Click" Height="25" />
+            <Button Content="Clear Filter" Click="ClearFilter_Click" Height="25" />
+            <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True" Height="35"/>
+        </StackPanel>
+    </Grid>
 </Window>
