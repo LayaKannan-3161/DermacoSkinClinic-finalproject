@@ -1,24 +1,94 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Serialization;
 
 namespace DermacoSkinClinic
 {
     public partial class AppointmentForm : Window
     {
+        private readonly AppointmentDataAccess dataAccess;
+
         public ObservableCollection<Appointment> Appointments { get; set; }
 
         public AppointmentForm()
         {
             InitializeComponent();
-            Appointments = new ObservableCollection<Appointment>();
+            dataAccess = new AppointmentDataAccess();
+            Appointments = dataAccess.LoadAppointments();
             AppointmentDataGrid.ItemsSource = Appointments;
         }
 
-        private void SubmitAppointment_Click(object sender, RoutedEventArgs e)
+        private void SaveAppointments()
         {
+            dataAccess.SaveAppointments(Appointments);
+        }
+        public class AppointmentDataAccess
+        {
+            public const string XmlFilePath = "Appointments.xml";
+
+            public ObservableCollection<Appointment> LoadAppointments()
+            {
+                if (File.Exists(XmlFilePath))
+                {
+                    try
+                    {
+                        using (var reader = new StreamReader(XmlFilePath))
+                        {
+                            var serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
+                            return (ObservableCollection<Appointment>)serializer.Deserialize(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading appointments: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+
+                return new ObservableCollection<Appointment>();
+            }
+
+            public void SaveAppointments(ObservableCollection<Appointment> appointments)
+            {
+                try
+                {
+                    using (var writer = new StreamWriter(XmlFilePath))
+                    {
+                        var serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
+                        serializer.Serialize(writer, appointments);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error saving appointments: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void LoadAppointments()
+        {
+            if (File.Exists(AppointmentDataAccess.XmlFilePath))
+            {
+                try
+                {
+                    using (var reader = new StreamReader(AppointmentDataAccess.XmlFilePath))
+                    {
+                        var serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
+                        Appointments = (ObservableCollection<Appointment>)serializer.Deserialize(reader);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading appointments: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void SubmitAppointment_Click(object sender, RoutedEventArgs e)
+        {     
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
             string email = EmailTextBox.Text;
@@ -65,9 +135,11 @@ namespace DermacoSkinClinic
                 AppointmentDate = (DateTime)AppointmentDateTimePicker.SelectedDate,
                 AppointmentTime = selectedTime,
             };
-
             Appointments.Add(newAppointment);
+            // Save appointments after adding a new one
+            SaveAppointments();
 
+            // Clear form fields
             ClearFormFields();
         }
 
