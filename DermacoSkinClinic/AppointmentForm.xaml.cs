@@ -103,6 +103,7 @@ namespace DermacoSkinClinic
                 // Validate the cleaned number against the Canadian phone number pattern eg (123) 456-7890
                 return System.Text.RegularExpressions.Regex.IsMatch(cleanedNumber, @"^(\d{10}|\(\d{3}\)\s?\d{3}[-\.\s]?\d{4}|\d{3}[-\.\s]?\d{4})$");
             }
+                string filePath = "\"C:\\Users\\prana\\Downloads\\DermacoSkinClinic-\\DermacoSkinClinic-finalproject-master\\DermacoSkinClinic-finalproject-master\\DermacoSkinClinic\\Appointments.xml";
             private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             // Clear the text in the textboxes
