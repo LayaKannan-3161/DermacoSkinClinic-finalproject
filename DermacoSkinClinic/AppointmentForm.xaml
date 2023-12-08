@@ -116,7 +116,7 @@
 
             <TextBlock Width="220" Text="Comments:" Height="25" HorizontalAlignment="Left"/>
             <TextBox x:Name="CommentsTextBox" Width="214" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Height="100" UndoLimit="90"/>
-            <CheckBox x:Name="EmailSubscriptionCheckBox" Content="Email me news and special offers" Height="25"/>
+            <CheckBox x:Name="EmailSubscriptionCheckBox" Content="Email me news and special offers" Height="25" Checked="EmailSubscriptionCheckBox_Checked"/>
             <CheckBox x:Name="TermsCheckBox" Height="50" Checked="TermsCheckBox_Checked_1">
                 <CheckBox.Content>
                     <TextBlock TextWrapping="Wrap">
@@ -154,7 +154,7 @@
             </ComboBox>
             <Button Content="Apply Filter" Click="ApplyFilter_Click" Height="25" />
             <Button Content="Clear Filter" Click="ClearFilter_Click" Height="25" />
-            <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True" Height="35"/>
+            <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True" Height="145"/>
         </StackPanel>
     </Grid>
 </Window>
