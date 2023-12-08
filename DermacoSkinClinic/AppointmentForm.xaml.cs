@@ -3,9 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.IO;
-using System.Xml.Serialization;
-
 
 namespace DermacoSkinClinic
 {
@@ -106,53 +103,27 @@ namespace DermacoSkinClinic
                 // Validate the cleaned number against the Canadian phone number pattern eg (123) 456-7890
                 return System.Text.RegularExpressions.Regex.IsMatch(cleanedNumber, @"^(\d{10}|\(\d{3}\)\s?\d{3}[-\.\s]?\d{4}|\d{3}[-\.\s]?\d{4})$");
             }
-            private void SaveAppointmentsToXml()
-            {
-                try
-                {
-                    // Specify the file path where you want to save the XML data
-                    string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Appointments.xml");
-
-                    // Create an XmlSerializer for the Appointment type
-                    XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
-
-                    // Use a FileStream to write the XML data to the file
-                    using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        // Serialize the ObservableCollection to XML and write it to the file
-                        serializer.Serialize(fileStream, Appointments);
-                    }
-
-                    MessageBox.Show("Appointments saved to XML successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error saving appointments to XML: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-
+                string filePath = "\"C:\\Users\\prana\\Downloads\\DermacoSkinClinic-\\DermacoSkinClinic-finalproject-master\\DermacoSkinClinic-finalproject-master\\DermacoSkinClinic\\Appointments.xml";
             private void ClearButton_Click(object sender, RoutedEventArgs e)
-
-            {
-                // Clear the text in the textboxes
-                FirstNameTextBox.Text = string.Empty;
-                LastNameTextBox.Text = string.Empty;
-                EmailTextBox.Text = string.Empty;
-                PhoneTextBox.Text = string.Empty;
-                PostalCodeTextBox.Text = string.Empty;
-                CommentsTextBox.Text = string.Empty;
-                ProcedureComboBox.SelectedIndex = -1;
-                EmailContactCheckBox.IsChecked = false;
-                PhoneContactCheckBox.IsChecked = false;
-                DOBDatePicker.SelectedDate = null;
-                AppointmentTimeComboBox.SelectedIndex = -1;
-                EmailSubscriptionCheckBox.IsChecked = false;
-                TermsCheckBox.IsChecked = false;
-                AppointmentDateTimePicker.SelectedDate = null;
-                // EmailSubscriptionCheckBox.IsEnabled; 
-                //TermsCheckBox.
-                //  AppointmentDataGrid
-            }
+        {
+            // Clear the text in the textboxes
+            FirstNameTextBox.Text = string.Empty;
+            LastNameTextBox.Text = string.Empty;
+            EmailTextBox.Text = string.Empty;
+            PhoneTextBox.Text = string.Empty;
+            PostalCodeTextBox.Text = string.Empty;
+            CommentsTextBox.Text = string.Empty;
+            ProcedureComboBox.SelectedIndex = -1;
+            EmailContactCheckBox.IsChecked = false;
+            PhoneContactCheckBox.IsChecked = false;
+            DOBDatePicker.SelectedDate = null;
+            AppointmentTimeComboBox.SelectedIndex = -1;
+            EmailSubscriptionCheckBox.IsChecked = false;
+            TermsCheckBox.IsChecked = false;
+            AppointmentDateTimePicker.SelectedDate = null;
+            // EmailSubscriptionCheckBox.IsEnabled; 
+            //TermsCheckBox.
+            //  AppointmentDataGrid
 
 
 
