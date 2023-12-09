@@ -95,6 +95,10 @@ namespace DermacoSkinClinic
             string phone = PhoneTextBox.Text;
             string comments = CommentsTextBox.Text;
             string selectedTime = AppointmentTimeComboBox.Text;
+            bool hasInsurance = InsuranceCheckBox.IsChecked.GetValueOrDefault();
+            string insuranceNumber = InsuranceNumberTextBox.Text;
+            string paymentMode = PaymentModeComboBox.SelectedItem?.ToString();
+            string creditCardNumber = CreditCardNumberTextBox.Text;
 
             if (string.IsNullOrWhiteSpace(firstName) || !IsValidName(firstName))
             {
@@ -240,9 +244,14 @@ namespace DermacoSkinClinic
             public string FirstName { get; set; } = string.Empty;
             public string LastName { get; set; } = string.Empty;
             public string Email { get; set; } = string.Empty;
-            public string Comments { get; set; } = string.Empty;
             public DateTime AppointmentDate { get; set; }
             public string AppointmentTime { get; set; }
+            public string Comments { get; set; } = string.Empty;
+        }
+
+        private void LastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
