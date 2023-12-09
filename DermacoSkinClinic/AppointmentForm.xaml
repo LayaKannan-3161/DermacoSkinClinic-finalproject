@@ -6,240 +6,238 @@
         <ImageBrush x:Key="BackgroundBrush" ImageSource="/DermacoSkinClinic;component/dermaco_background_image.jpg"/>
     </Window.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
+    <ScrollViewer>
+        <ScrollViewer.Background>
+            <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+        </ScrollViewer.Background>
+        <ScrollViewer>
+            <Grid Height="884" Width="883">
+                <!-- Input Section -->
+                <StackPanel Margin="5,74,588,5" Grid.Column="0">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+                    </StackPanel.Background>
+                    <TextBlock FontWeight="Bold" Margin="0,0,0,5" Text="Customer Information:"/>
+                    <!-- First Name -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="First Name:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="FirstNameTextBox" Grid.Column="1" Margin="30,0,0,0" BorderBrush="#FFABACB3"/>
+                    </Grid>
 
-        <!-- Input Section -->
-        <StackPanel Margin="5" Grid.Column="0">
-            <StackPanel.Background>
-                <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
-            </StackPanel.Background>
-            <TextBlock FontWeight="Bold" Margin="0,0,0,5" Text="Customer Information:"/>
-            <!-- First Name -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="First Name:" VerticalAlignment="Center"/>
-                <TextBox x:Name="FirstNameTextBox" Grid.Column="1" Margin="30,0,0,0" BorderBrush="#FFABACB3"/>
+                    <!-- Last Name -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="19*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Last Name:" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="LastNameTextBox" Grid.Column="2" Margin="30,2,0,0" Grid.ColumnSpan="3" VerticalAlignment="Top" TextChanged="LastNameTextBox_TextChanged"/>
+                    </Grid>
+                    <!-- Email -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="17*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Email:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="EmailTextBox" Grid.Column="1" Margin="30,0,0,0" Grid.ColumnSpan="2"/>
+                    </Grid>
+
+                    <!-- Phone -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Phone:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="PhoneTextBox" Grid.Column="1" Margin="30,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                    </Grid>
+
+                    <!-- Contact Preference -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Contact Preference:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,58,0"/>
+                        <CheckBox Content="Email" x:Name="EmailContactCheckBox" Grid.Column="1" Grid.ColumnSpan="2" Margin="30,0,20,0"/>
+                        <CheckBox Content="Phone" x:Name="PhoneContactCheckBox" Grid.Column="2" Height="25" Margin="15,0,-50,0"/>
+                    </Grid>
+                    <!-- Postal Code -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Postal Code:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,125,0"/>
+                        <TextBox x:Name="PostalCodeTextBox" Grid.Column="1" Margin="30,0,0,0"/>
+                    </Grid>
+
+                    <!-- Date of Birth -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Date of Birth:" VerticalAlignment="Center"/>
+                        <DatePicker x:Name="DOBDatePicker" Grid.Column="1" Margin="30,0,0,0" Grid.ColumnSpan="3"/>
+                    </Grid>
+
+                    <!-- Procedure Interested -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Procedure Interested:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,111,0"/>
+                        <ComboBox x:Name="ProcedureComboBox" Grid.Column="1" Margin="30,0,5,0">
+                            <ComboBoxItem Content="Laser Hair Removal"/>
+                            <ComboBoxItem Content="Laser Skin Whitening"/>
+                            <ComboBoxItem Content="PNP Hair Treatment"/>
+                            <ComboBoxItem Content="Chemical Peel"/>
+                            <ComboBoxItem Content="Consultation"/>
+                        </ComboBox>
+                    </Grid>
+                    <!-- Appointment Date  -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Appointment Date:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,121,0"/>
+                        <DatePicker x:Name="AppointmentDateTimePicker" Grid.Column="1" Margin="30,0,0,0"/>
+                    </Grid>
+
+                    <!-- Appointment Time -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Appointment Time:" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="AppointmentTimeComboBox" Grid.Column="1" Margin="30,0,0,0" Height="22" VerticalAlignment="Center">
+                            <ComboBoxItem Content="10:00 AM"/>
+                            <ComboBoxItem Content="11:00 AM"/>
+                        </ComboBox>
+                    </Grid>
+
+                    <!-- Insurance CheckBox -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Do you have an Insurance?" VerticalAlignment="Center" Margin="0,0,77,0" Grid.ColumnSpan="2" Width="1000"/>
+                        <CheckBox Content="Yes" x:Name="InsuranceCheckBox" Grid.Column="1" Margin="55,0,0,0"/>
+                    </Grid>
+
+                    <!-- Insurance Number TextBox -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Insurance Number:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="InsuranceNumberTextBox" Grid.Column="1" Margin="30,0,0,0"/>
+                    </Grid>
+
+                    <!-- Payment Mode ComboBox -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Payment Mode:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                        <ComboBox x:Name="PaymentModeComboBox" Grid.Column="1" Margin="30,0,0,0">
+                            <ComboBoxItem Content="Credit Card"/>
+                            <ComboBoxItem Content="Insurance"/>
+                        </ComboBox>
+                    </Grid>
+
+                    <!-- Credit Card Number TextBox -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Credit Card Number:" VerticalAlignment="Center" Margin="0,0,114,0" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="CreditCardNumberTextBox" Grid.Column="1" Margin="30,0,0,0" Height="18" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Comments Section -->
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Comments:" VerticalAlignment="Center"/>
+                        <TextBox x:Name="CommentsTextBox" Grid.Column="1" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" UndoLimit="90" Margin="30,0,0,0"/>
+                    </Grid>
+
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="EmailSubscriptionCheckBox" Content="Email me news and special offers" Height="25" Checked="EmailSubscriptionCheckBox_Checked" Grid.ColumnSpan="2" Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox x:Name="TermsCheckBox" Checked="TermsCheckBox_Checked_1" Grid.ColumnSpan="2">
+                            <TextBlock TextWrapping="Wrap" Width="230" Grid.ColumnSpan="2" Height="42"><Run Text="By checking this box, you agree to the Terms of Use."/></TextBlock>
+                        </CheckBox>
+                    </Grid>
+
+                    <Button Content="Submit Appointment" Click="SubmitAppointment_Click" Height="25" Margin="0,0,0,0"/>
+                    <Button Content="Edit Appointment" Click="SubmitAppointment_Click" Height="25" Margin="0,10,0,0"/>
+                    <Button Content="Cancel Appointment" Click="SubmitAppointment_Click" Height="25" Margin="0,10,0,0"/>
+                    <Button Content="Exit" Click="Exit_Click" Height="25" Margin="0,10,0,0"/>
+                </StackPanel>
+
+
+                <StackPanel Margin="305,74,-12,5" RenderTransformOrigin="-0.043,0.488">
+                    <StackPanel.Background>
+                        <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+                    </StackPanel.Background>
+                    <TextBlock FontWeight="Bold" Margin="0,0,0,5" Height="31" Width="630" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="Search and Filter:"/></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="24*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="YourPlaceholderTextHere" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.ColumnSpan="2"/>
+                        <TextBox x:Name="SearchTextBox" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="18" />
+                    </Grid>
+                    <ComboBox x:Name="FilterComboBox" Margin="0,0,0,5" Height="30">
+                        <ComboBoxItem Content="Filter by Name"/>
+                        <ComboBoxItem Content="Filter by Email"/>
+                    </ComboBox>
+                    <Button Content="Search" Click="ApplyFilter_Click" Height="25" />
+                    <Button Content="Clear" Click="ClearFilter_Click" Height="25" />
+                    <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True" Height="160"/>
+                </StackPanel>
+                <TextBlock HorizontalAlignment="Center" Margin="0,9,0,0" TextWrapping="Wrap" Text="Dermaco Skin Clinic" VerticalAlignment="Top" Width="208" FontWeight="Bold" FontSize="20" Height="35"/>
             </Grid>
-
-            <!-- Last Name -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="19*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="5*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Last Name:" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="LastNameTextBox" Grid.Column="2" Margin="30,2,0,0" Grid.ColumnSpan="3" VerticalAlignment="Top" TextChanged="LastNameTextBox_TextChanged"/>
-            </Grid>
-            <!-- Email -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="17*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Email:" VerticalAlignment="Center"/>
-                <TextBox x:Name="EmailTextBox" Grid.Column="1" Margin="30,0,0,0" Grid.ColumnSpan="2"/>
-            </Grid>
-
-            <!-- Phone -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Phone:" VerticalAlignment="Center"/>
-                <TextBox x:Name="PhoneTextBox" Grid.Column="1" Margin="30,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-            </Grid>
-
-            <!-- Contact Preference -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Contact Preference:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,58,0"/>
-                <CheckBox Content="Email" x:Name="EmailContactCheckBox" Grid.Column="1" Grid.ColumnSpan="2" Margin="30,0,20,0"/>
-                <CheckBox Content="Phone" x:Name="PhoneContactCheckBox" Grid.Column="2" Height="25" Margin="15,0,-50,0"/>
-            </Grid>
-            <!-- Postal Code -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Postal Code:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,125,0"/>
-                <TextBox x:Name="PostalCodeTextBox" Grid.Column="1" Margin="30,0,0,0"/>
-            </Grid>
-
-            <!-- Date of Birth -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="11*"/>
-                    <ColumnDefinition Width="11*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Date of Birth:" VerticalAlignment="Center"/>
-                <DatePicker x:Name="DOBDatePicker" Grid.Column="1" Margin="30,0,0,0" Grid.ColumnSpan="3"/>
-            </Grid>
-
-            <!-- Procedure Interested -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Procedure Interested:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,111,0"/>
-                <ComboBox x:Name="ProcedureComboBox" Grid.Column="1" Margin="30,0,5,0">
-                    <ComboBoxItem Content="Laser Hair Removal"/>
-                    <ComboBoxItem Content="Laser Skin Whitening"/>
-                    <ComboBoxItem Content="PNP Hair Treatment"/>
-                    <ComboBoxItem Content="Chemical Peel"/>
-                    <ComboBoxItem Content="Consultation"/>
-                </ComboBox>
-            </Grid>
-            <!-- Appointment Date  -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="Appointment Date:" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,121,0"/>
-                <DatePicker x:Name="AppointmentDateTimePicker" Grid.Column="1" Margin="30,0,0,0"/>
-            </Grid>
-
-            <!-- Appointment Time -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Appointment Time:" VerticalAlignment="Center"/>
-                <ComboBox x:Name="AppointmentTimeComboBox" Grid.Column="1" Margin="30,0,0,0" Height="22" VerticalAlignment="Center">
-                    <ComboBoxItem Content="10:00 AM"/>
-                    <ComboBoxItem Content="11:00 AM"/>
-                </ComboBox>
-            </Grid>
-
-            <!-- Insurance CheckBox -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Do you have an Insurance?" VerticalAlignment="Center" Margin="0,0,77,0" Grid.ColumnSpan="2" Width="1000"/>
-                <CheckBox Content="Yes" x:Name="InsuranceCheckBox" Grid.Column="1" Margin="55,0,0,0"/>
-            </Grid>
-
-            <!-- Insurance Number TextBox -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Insurance Number:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="InsuranceNumberTextBox" Grid.Column="1" Margin="30,0,0,0"/>
-            </Grid>
-
-            <!-- Payment Mode ComboBox -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Payment Mode:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <ComboBox x:Name="PaymentModeComboBox" Grid.Column="1" Margin="30,0,0,0">
-                    <ComboBoxItem Content="Credit Card"/>
-                    <ComboBoxItem Content="Insurance"/>
-                </ComboBox>
-            </Grid>
-
-            <!-- Credit Card Number TextBox -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="Credit Card Number:" VerticalAlignment="Center" Margin="0,0,114,0" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="CreditCardNumberTextBox" Grid.Column="1" Margin="30,0,0,0" Height="18" VerticalAlignment="Center"/>
-            </Grid>
-
-            <!-- Comments Section -->
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="Comments:" VerticalAlignment="Center"/>
-                <TextBox x:Name="CommentsTextBox" Grid.Column="1" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" UndoLimit="90" Margin="30,0,0,0"/>
-            </Grid>
-
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <CheckBox x:Name="EmailSubscriptionCheckBox" Content="Email me news and special offers" Height="25" Checked="EmailSubscriptionCheckBox_Checked" Grid.ColumnSpan="2" Margin="0,0,10,0"/>
-            </Grid>
-
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="210"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <CheckBox x:Name="TermsCheckBox" Checked="TermsCheckBox_Checked_1" Grid.ColumnSpan="2">
-                    <CheckBox.Content>
-                        <TextBlock TextWrapping="Wrap" Width="230" Grid.ColumnSpan="2" Height="42">
-                        By checking this box, you agree to the Terms of Use.
-                        </TextBlock>
-                    </CheckBox.Content>
-                </CheckBox>
-            </Grid>
-
-            <Button Content="Submit Appointment" Click="SubmitAppointment_Click" Height="25" Margin="0,0,0,0"/>
-            <Button Content="Edit Appointment" Click="SubmitAppointment_Click" Height="25" Margin="0,10,0,0"/>
-            <Button Content="Cancel Appointment" Click="SubmitAppointment_Click" Height="25" Margin="0,10,0,0"/>
-            <Button Content="Exit" Click="Exit_Click" Height="25" Margin="0,10,0,0"/>
-        </StackPanel>
-
-
-        <!-- Search and Filter Section -->
-        <StackPanel Margin="5" Grid.Column="1" RenderTransformOrigin="-0.043,0.488">
-            <StackPanel.Background>
-                <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
-            </StackPanel.Background>
-            <TextBlock FontWeight="Bold" Margin="0,0,0,5" Height="31" Width="630" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Text="Search and Filter:"/></TextBlock>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="6*"/>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="24*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="YourPlaceholderTextHere" Foreground="Gray" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="SearchTextBox" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="18" />
-            </Grid>
-            <ComboBox x:Name="FilterComboBox" Margin="0,0,0,5" Height="30">
-                <ComboBoxItem Content="Filter by Name"/>
-                <ComboBoxItem Content="Filter by Email"/>
-            </ComboBox>
-            <Button Content="Search" Click="ApplyFilter_Click" Height="25" />
-            <Button Content="Clear" Click="ClearFilter_Click" Height="25" />
-            <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True" Height="145"/>
-        </StackPanel>
-    </Grid>
+        </ScrollViewer>
+    </ScrollViewer>
 </Window>
