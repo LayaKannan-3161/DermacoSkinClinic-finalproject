@@ -147,10 +147,7 @@ namespace DermacoSkinClinic
             ClearFormFields();
         }
 
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
-        {
-            ClearFormFields();
-        }
+        
 
         private void ApplyFilter_Click(object sender, RoutedEventArgs e)
         {
@@ -255,6 +252,11 @@ namespace DermacoSkinClinic
         private void LastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

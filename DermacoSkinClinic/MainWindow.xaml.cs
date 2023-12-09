@@ -18,7 +18,7 @@ namespace YourNamespace
             string password = txtPassword.Password;
 
             // Check username and password (example: hardcoded for demonstration)
-            if (username == "user" && password == "password")
+            if (username == "admin" && password == "admin")
             {
                 // Navigate to the next page (MainWindow2 for example)
                 AppointmentForm appointmentForm = new AppointmentForm();
@@ -31,6 +31,11 @@ namespace YourNamespace
             {
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
+        }
+
+        private void Logincancel_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
