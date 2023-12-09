@@ -143,10 +143,7 @@ namespace DermacoSkinClinic
             ClearFormFields();
         }
 
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
-        {
-            ClearFormFields();
-        }
+        
 
         private void ApplyFilter_Click(object sender, RoutedEventArgs e)
         {
@@ -246,6 +243,11 @@ namespace DermacoSkinClinic
             public string Comments { get; set; } = string.Empty;
             public DateTime AppointmentDate { get; set; }
             public string AppointmentTime { get; set; }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
