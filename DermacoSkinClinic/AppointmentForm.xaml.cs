@@ -124,6 +124,24 @@ namespace DermacoSkinClinic
                 return;
             }
 
+            if (!IsValidCreditCardNumber(creditCardNumber))
+            {
+                MessageBox.Show("Please enter a valid 16-digit numeric credit card number.", "Invalid Credit Card Number", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!IsValidInsuranceNumber(insuranceNumber))
+            {
+                MessageBox.Show("Please enter a valid 10-digit numeric insurance number.", "Invalid Insurance Number", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!IsValidCanadianPostalCode(PostalCodeTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid Canadian postal code.", "Invalid Postal Code", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (!TermsCheckBox.IsChecked.GetValueOrDefault())
             {
                 MessageBox.Show("Please accept the terms and conditions.", "Terms and Conditions", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -147,7 +165,52 @@ namespace DermacoSkinClinic
             ClearFormFields();
         }
 
-        
+        private bool IsValidInsuranceNumber(string insuranceNumber)
+        {
+            if (string.IsNullOrWhiteSpace(insuranceNumber))
+            {
+                return false;
+            }
+
+            // Check if the insurance number contains only numeric characters
+            if (!insuranceNumber.All(char.IsDigit))
+            {
+                return false;
+            }
+
+            // Check if the insurance number is exactly 10 digits long
+            return insuranceNumber.Length == 10;
+        }
+
+        private bool IsValidCanadianPostalCode(string postalCode)
+        {
+            if (string.IsNullOrWhiteSpace(postalCode))
+            {
+                return false;
+            }
+
+            // Canadian postal code regex pattern
+            string pattern = @"^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ][ -]?\d[ABCEGHJKLMNPRSTVWXYZ]\d$";
+
+            return System.Text.RegularExpressions.Regex.IsMatch(postalCode, pattern);
+        }
+
+        private bool IsValidCreditCardNumber(string creditCardNumber)
+        {
+            if (string.IsNullOrWhiteSpace(creditCardNumber))
+            {
+                return false;
+            }
+
+            // Check if the credit card number contains only numeric characters
+            if (!creditCardNumber.All(char.IsDigit))
+            {
+                return false;
+            }
+
+            // Check if the credit card number is exactly 16 digits long
+            return creditCardNumber.Length == 16;
+        }
 
         private void ApplyFilter_Click(object sender, RoutedEventArgs e)
         {
