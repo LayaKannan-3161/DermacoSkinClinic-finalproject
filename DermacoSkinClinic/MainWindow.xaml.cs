@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
-namespace YourNamespace
+namespace DermacoSkinClinic
 {
     public partial class MainWindow : Window
     {

@@ -158,11 +158,43 @@ namespace DermacoSkinClinic
                 AppointmentTime = selectedTime,
             };
             Appointments.Add(newAppointment);
+            // Display user information in the UI
+            DisplayUserProfile(newAppointment);
+
             // Save appointments after adding a new one
             SaveAppointments();
 
             // Clear form fields
             ClearFormFields();
+        }
+        private void ProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the selected appointment or user information
+            //Appointment selectedAppointment = AppointmentDataGrid.SelectedItem as Appointment;
+
+            //if (selectedAppointment != null)
+            //{
+            UserProfilePage userProfilePage = new UserProfilePage();
+
+            userProfilePage.Show();
+            // userProfilePage.UserNameTextBox.Text = $"Name: {selectedAppointment.FirstName} {selectedAppointment.LastName}";
+            // userProfilePage.EmailTextBox.Text = $"Email: {selectedAppointment.Email}";
+            //  userProfilePage.PhoneTextBox.Text = $"Phone: {selectedAppointment.Phone}";
+
+            this.Close();
+            //}
+        }
+
+
+        private void DisplayUserProfile(Appointment appointment)
+        {
+
+
+            // Assuming you have TextBlock controls named FirstNameTextBlock, LastNameTextBlock, PhoneTextBlock, and EmailTextBlock in your XAML
+            FirstNameTextBox.Text = appointment.FirstName;
+            LastNameTextBox.Text = appointment.LastName;
+            PhoneTextBox.Text = appointment.Phone; // Use the appropriate property from your Appointment class
+            EmailTextBox.Text = appointment.Email;
         }
 
         private bool IsValidInsuranceNumber(string insuranceNumber)
@@ -310,6 +342,7 @@ namespace DermacoSkinClinic
             public DateTime AppointmentDate { get; set; }
             public string AppointmentTime { get; set; }
             public string Comments { get; set; } = string.Empty;
+            public string Phone { get; set; } = string.Empty;
         }
 
         private void LastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
