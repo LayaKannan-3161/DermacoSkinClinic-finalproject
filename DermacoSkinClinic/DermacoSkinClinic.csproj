@@ -9,12 +9,14 @@
 
   <ItemGroup>
     <None Remove="dermaco_background_image.jpg" />
+    <None Remove="ProfileLogo.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="dermaco_background_image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="ProfileLogo.jpg" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,9 @@
 ﻿// MainWindow.xaml.cs
 using DermacoSkinClinic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace YourNamespace
 {
@@ -11,27 +14,43 @@ namespace YourNamespace
             InitializeComponent();
         }
 
+
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             // Implement your authentication logic here
+            string expectedUsername = "admin";
+            string expectedPassword = "admin";
+
+
             string username = txtUsername.Text;
             string password = txtPassword.Password;
 
             // Check username and password (example: hardcoded for demonstration)
-            if (username == "admin" && password == "admin")
+            if (username != expectedUsername || password != expectedPassword)
             {
-                // Navigate to the next page (MainWindow2 for example)
-                AppointmentForm appointmentForm = new AppointmentForm();
-                appointmentForm.Show();
-
-                // Close the current login window
-                this.Close();
+                // Wrong entry, highlight the text boxes in red
+                HighlightControl(txtUsername);
+                HighlightControl(txtPassword);
+                MessageBox.Show("Incorrect username or password");
             }
             else
             {
-                MessageBox.Show("Invalid username or password. Please try again.");
+                // Correct entry, proceed with your login logic
+                MessageBox.Show("Login successful!");
+                AppointmentForm appointmentForm = new AppointmentForm();
+                appointmentForm.Show();
+
             }
         }
+        private void HighlightControl(Control control)
+        {
+            // Highlight the TextBox with a red border
+            control.BorderBrush = Brushes.Red;
+            control.BorderThickness = new Thickness(2);
+        }
+
+
 
         private void Logincancel_Click(object sender, RoutedEventArgs e)
         {
