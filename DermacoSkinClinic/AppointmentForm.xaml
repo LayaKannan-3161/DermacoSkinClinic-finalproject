@@ -237,6 +237,9 @@
                     <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="True" Height="160"/>
                 </StackPanel>
                 <TextBlock HorizontalAlignment="Center" Margin="0,9,0,0" TextWrapping="Wrap" Text="Dermaco Skin Clinic" VerticalAlignment="Top" Width="208" FontWeight="Bold" FontSize="20" Height="35"/>
+                <Button Content="About Us" HorizontalAlignment="Left" Margin="546,39,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click"/>
+                <Button Content="Help" HorizontalAlignment="Left" Margin="645,39,0,0" VerticalAlignment="Top" Width="70" Click="Button_Click_1"/>
+                <Button Content="Exit" HorizontalAlignment="Left" Margin="755,39,0,0" VerticalAlignment="Top" Width="65"/>
             </Grid>
         </ScrollViewer>
     </ScrollViewer>

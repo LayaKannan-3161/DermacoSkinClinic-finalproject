@@ -258,5 +258,17 @@ namespace DermacoSkinClinic
         {
             Application.Current.Shutdown();
         }
+
+       private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 win = new Window1();
+            win.Show();
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
