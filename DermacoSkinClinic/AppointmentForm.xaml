@@ -1,11 +1,10 @@
-﻿<Window
-    x:Class="DermacoSkinClinic.AppointmentForm"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Dermaco Clinic Appointment"
-    Width="900"
-    Height="900"
-    Background="White" WindowState="Maximized">
+﻿<Window x:Class="DermacoSkinClinic.AppointmentForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dermaco Clinic Appointment"
+        Width="900"
+        Height="1560"
+        Background="White" WindowState="Maximized">
     <Window.Resources>
         <ImageBrush x:Key="BackgroundBrush" ImageSource="/DermacoSkinClinic;component/dermaco_background_image.jpg" />
     </Window.Resources>
@@ -15,29 +14,18 @@
             <ImageBrush ImageSource="/dermaco_background_image.jpg" />
         </ScrollViewer.Background>
         <ScrollViewer>
+
             <Grid Width="883" Height="884">
                 <!--  Input Section  -->
-                <StackPanel Grid.Column="0" Margin="5,74,588,5">
+                <StackPanel Grid.Column="0" Margin="5,229,588,-117">
                     <StackPanel.Background>
                         <ImageBrush ImageSource="/dermaco_background_image.jpg" />
                     </StackPanel.Background>
                     <TextBlock
-                        Margin="0,0,0,5"
-                        FontWeight="Bold"
-                        Text="Customer Information:" />
-                    <Button
-                        x:Name="ProfileButton"
-                        Width="50"
-                        Height="50"
-                        Margin="230,0,0,10"
-                        Click="ProfileButton_Click">
-                        <Button.Content>
-                            <Image
-                                Width="50"
-                                Height="50"
-                                Source="C:\Users\Sumat\Downloads\my-profile-icon-clipart-2.jpg" />
-                        </Button.Content>
-                    </Button>
+                            Margin="0,0,0,5"
+                            FontWeight="Bold"
+                            Text="Customer Information:" FontStyle="Italic" FontFamily="Calisto MT" FontSize="22" />
+
                     <!--  First Name  -->
                     <Grid Margin="0,10,0,0">
                         <Grid.ColumnDefinitions>
@@ -46,10 +34,10 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock VerticalAlignment="Center" Text="First Name:" />
                         <TextBox
-                            x:Name="FirstNameTextBox"
-                            Grid.Column="1"
-                            Margin="30,0,0,0"
-                            BorderBrush="#FFABACB3" />
+                                x:Name="FirstNameTextBox"
+                                Grid.Column="1"
+                                Margin="30,0,0,0"
+                                BorderBrush="#FFABACB3" />
                     </Grid>
 
                     <!--  Last Name  -->
@@ -62,16 +50,16 @@
                             <ColumnDefinition Width="5*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.ColumnSpan="2"
-                            VerticalAlignment="Center"
-                            Text="Last Name:" />
+                                Grid.ColumnSpan="2"
+                                VerticalAlignment="Center"
+                                Text="Last Name:" />
                         <TextBox
-                            x:Name="LastNameTextBox"
-                            Grid.Column="2"
-                            Grid.ColumnSpan="3"
-                            Margin="30,2,0,0"
-                            VerticalAlignment="Top"
-                            TextChanged="LastNameTextBox_TextChanged" />
+                                x:Name="LastNameTextBox"
+                                Grid.Column="2"
+                                Grid.ColumnSpan="3"
+                                Margin="30,2,0,0"
+                                VerticalAlignment="Top"
+                                TextChanged="LastNameTextBox_TextChanged" />
                     </Grid>
                     <!--  Email  -->
                     <Grid Margin="0,10,0,0">
@@ -81,14 +69,14 @@
                             <ColumnDefinition Width="17*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            VerticalAlignment="Center"
-                            Text="Email:" />
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Email:" />
                         <TextBox
-                            x:Name="EmailTextBox"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            Margin="30,0,0,0" />
+                                x:Name="EmailTextBox"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Margin="30,0,0,0" />
                     </Grid>
 
                     <!--  Phone  -->
@@ -99,15 +87,15 @@
                             <ColumnDefinition Width="4*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            VerticalAlignment="Center"
-                            Text="Phone:" />
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Phone:" />
                         <TextBox
-                            x:Name="PhoneTextBox"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            Margin="30,0,0,0"
-                            VerticalAlignment="Center" />
+                                x:Name="PhoneTextBox"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Margin="30,0,0,0"
+                                VerticalAlignment="Center" />
                     </Grid>
 
                     <!--  Contact Preference  -->
@@ -118,23 +106,23 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,58,0"
-                            VerticalAlignment="Center"
-                            Text="Contact Preference:" />
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,58,0"
+                                VerticalAlignment="Center"
+                                Text="Contact Preference:" />
                         <CheckBox
-                            x:Name="EmailContactCheckBox"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
-                            Margin="30,0,20,0"
-                            Content="Email" />
+                                x:Name="EmailContactCheckBox"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Margin="30,0,20,0"
+                                Content="Email" />
                         <CheckBox
-                            x:Name="PhoneContactCheckBox"
-                            Grid.Column="2"
-                            Height="25"
-                            Margin="15,0,-50,0"
-                            Content="Phone" />
+                                x:Name="PhoneContactCheckBox"
+                                Grid.Column="2"
+                                Height="25"
+                                Margin="15,0,-50,0"
+                                Content="Phone" />
                     </Grid>
                     <!--  Postal Code  -->
                     <Grid Margin="0,10,0,0">
@@ -143,15 +131,15 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,125,0"
-                            VerticalAlignment="Center"
-                            Text="Postal Code:" />
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,125,0"
+                                VerticalAlignment="Center"
+                                Text="Postal Code:" />
                         <TextBox
-                            x:Name="PostalCodeTextBox"
-                            Grid.Column="1"
-                            Margin="30,0,0,0" />
+                                x:Name="PostalCodeTextBox"
+                                Grid.Column="1"
+                                Margin="30,0,0,0" />
                     </Grid>
 
                     <!--  Date of Birth  -->
@@ -163,14 +151,14 @@
                             <ColumnDefinition Width="4*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            VerticalAlignment="Center"
-                            Text="Date of Birth:" />
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Date of Birth:" />
                         <DatePicker
-                            x:Name="DOBDatePicker"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="3"
-                            Margin="30,0,0,0" />
+                                x:Name="DOBDatePicker"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="3"
+                                Margin="30,0,0,0" />
                     </Grid>
 
                     <!--  Procedure Interested  -->
@@ -180,15 +168,15 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,111,0"
-                            VerticalAlignment="Center"
-                            Text="Procedure Interested:" />
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,111,0"
+                                VerticalAlignment="Center"
+                                Text="Procedure Interested:" />
                         <ComboBox
-                            x:Name="ProcedureComboBox"
-                            Grid.Column="1"
-                            Margin="30,0,5,0">
+                                x:Name="ProcedureComboBox"
+                                Grid.Column="1"
+                                Margin="30,0,5,0">
                             <ComboBoxItem Content="Laser Hair Removal" />
                             <ComboBoxItem Content="Laser Skin Whitening" />
                             <ComboBoxItem Content="PNP Hair Treatment" />
@@ -204,15 +192,15 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,121,0"
-                            VerticalAlignment="Center"
-                            Text="Appointment Date:" />
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,121,0"
+                                VerticalAlignment="Center"
+                                Text="Appointment Date:" />
                         <DatePicker
-                            x:Name="AppointmentDateTimePicker"
-                            Grid.Column="1"
-                            Margin="30,0,0,0" />
+                                x:Name="AppointmentDateTimePicker"
+                                Grid.Column="1"
+                                Margin="30,0,0,0" />
                     </Grid>
 
                     <!--  Appointment Time  -->
@@ -222,15 +210,15 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            VerticalAlignment="Center"
-                            Text="Appointment Time:" />
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Appointment Time:" />
                         <ComboBox
-                            x:Name="AppointmentTimeComboBox"
-                            Grid.Column="1"
-                            Height="22"
-                            Margin="30,0,0,0"
-                            VerticalAlignment="Center">
+                                x:Name="AppointmentTimeComboBox"
+                                Grid.Column="1"
+                                Height="22"
+                                Margin="30,0,0,0"
+                                VerticalAlignment="Center">
                             <ComboBoxItem Content="10:00 AM" />
                             <ComboBoxItem Content="11:00 AM" />
                         </ComboBox>
@@ -257,17 +245,17 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Width="1000"
-                            Margin="0,0,77,0"
-                            VerticalAlignment="Center"
-                            Text="Do you have an Insurance?" />
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Width="1000"
+                                Margin="0,0,77,0"
+                                VerticalAlignment="Center"
+                                Text="Do you have an Insurance?" />
                         <CheckBox
-                            x:Name="InsuranceCheckBox"
-                            Grid.Column="1"
-                            Margin="55,0,0,0"
-                            Content="Yes" />
+                                x:Name="InsuranceCheckBox"
+                                Grid.Column="1"
+                                Margin="55,0,0,0"
+                                Content="Yes" />
                     </Grid>
 
                     <!--  Insurance Number TextBox  -->
@@ -277,15 +265,15 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,5,0"
-                            VerticalAlignment="Center"
-                            Text="Insurance Number:" />
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,5,0"
+                                VerticalAlignment="Center"
+                                Text="Insurance Number:" />
                         <TextBox
-                            x:Name="InsuranceNumberTextBox"
-                            Grid.Column="1"
-                            Margin="30,0,0,0" />
+                                x:Name="InsuranceNumberTextBox"
+                                Grid.Column="1"
+                                Margin="30,0,0,0" />
                     </Grid>
 
                     <!--  Payment Mode ComboBox  -->
@@ -295,14 +283,14 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            Margin="0,0,5,0"
-                            VerticalAlignment="Center"
-                            Text="Payment Mode:" />
+                                Grid.Column="0"
+                                Margin="0,0,5,0"
+                                VerticalAlignment="Center"
+                                Text="Payment Mode:" />
                         <ComboBox
-                            x:Name="PaymentModeComboBox"
-                            Grid.Column="1"
-                            Margin="30,0,0,0">
+                                x:Name="PaymentModeComboBox"
+                                Grid.Column="1"
+                                Margin="30,0,0,0">
                             <ComboBoxItem Content="Credit Card" />
                             <ComboBoxItem Content="Insurance" />
                         </ComboBox>
@@ -315,17 +303,17 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="0,0,114,0"
-                            VerticalAlignment="Center"
-                            Text="Credit Card Number:" />
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,114,0"
+                                VerticalAlignment="Center"
+                                Text="Credit Card Number:" />
                         <TextBox
-                            x:Name="CreditCardNumberTextBox"
-                            Grid.Column="1"
-                            Height="18"
-                            Margin="30,0,0,0"
-                            VerticalAlignment="Center" />
+                                x:Name="CreditCardNumberTextBox"
+                                Grid.Column="1"
+                                Height="18"
+                                Margin="30,0,0,0"
+                                VerticalAlignment="Center" />
                     </Grid>
 
                     <!--  Comments Section  -->
@@ -336,16 +324,16 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock
-                            Grid.Column="0"
-                            VerticalAlignment="Center"
-                            Text="Comments:" />
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="Comments:" />
                         <TextBox
-                            x:Name="CommentsTextBox"
-                            Grid.Column="1"
-                            Margin="30,0,0,0"
-                            AcceptsReturn="True"
-                            UndoLimit="90"
-                            VerticalScrollBarVisibility="Auto" />
+                                x:Name="CommentsTextBox"
+                                Grid.Column="1"
+                                Margin="30,0,0,0"
+                                AcceptsReturn="True"
+                                UndoLimit="90"
+                                VerticalScrollBarVisibility="Auto" />
                     </Grid>
 
                     <Grid Margin="0,10,0,0">
@@ -354,12 +342,12 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <CheckBox
-                            x:Name="EmailSubscriptionCheckBox"
-                            Grid.ColumnSpan="2"
-                            Height="25"
-                            Margin="0,0,10,0"
-                            Checked="EmailSubscriptionCheckBox_Checked"
-                            Content="Email me news and special offers" />
+                                x:Name="EmailSubscriptionCheckBox"
+                                Grid.ColumnSpan="2"
+                                Height="25"
+                                Margin="0,0,10,0"
+                                Checked="EmailSubscriptionCheckBox_Checked"
+                                Content="Email me news and special offers" />
                     </Grid>
 
                     <Grid Margin="0,10,0,0">
@@ -369,51 +357,50 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <CheckBox
-                            x:Name="TermsCheckBox"
-                            Grid.ColumnSpan="2"
-                            Checked="TermsCheckBox_Checked_1">
-                            <TextBlock
+                                x:Name="TermsCheckBox"
                                 Grid.ColumnSpan="2"
-                                Width="230"
-                                Height="42"
-                                TextWrapping="Wrap"><Run Text="By checking this box, you agree to the Terms of Use." /></TextBlock>
+                                Checked="TermsCheckBox_Checked_1">
+                            <TextBlock
+                                    Grid.ColumnSpan="2"
+                                    Width="230"
+                                    Height="42"
+                                    TextWrapping="Wrap"><Run Text="By checking this box, you agree to the Terms of Use." /></TextBlock>
                         </CheckBox>
                     </Grid>
 
                     <Button
-                        Height="25"
-                        Margin="0,0,0,0"
-                        Click="SubmitAppointment_Click"
-                        Content="Submit Appointment" />
+                            Height="25"
+                            Margin="0,0,0,0"
+                            Click="SubmitAppointment_Click"
+                            Content="Submit Appointment" />
                     <Button
-                        Height="25"
-                        Margin="0,10,0,0"
-                        Click="SubmitAppointment_Click"
-                        Content="Edit Appointment" />
+                            Height="25"
+                            Margin="0,10,0,0"
+                            Click="SubmitAppointment_Click"
+                            Content="Edit Appointment" />
                     <Button
-                        Height="25"
-                        Margin="0,10,0,0"
-                        Click="SubmitAppointment_Click"
-                        Content="Cancel Appointment" />
+                            Height="25"
+                            Margin="0,10,0,0"
+                            Click="SubmitAppointment_Click"
+                            Content="Cancel Appointment" />
                     <Button
-                        Height="25"
-                        Margin="0,10,0,0"
-                        Click="Exit_Click"
-                        Content="Exit" />
+                            Height="25"
+                            Margin="0,10,0,0"
+                            Click="Exit_Click"
+                            Content="Exit" />
                 </StackPanel>
 
 
-                <StackPanel Margin="305,74,-12,5" RenderTransformOrigin="-0.043,0.488">
+                <StackPanel Margin="305,229,-12,0" RenderTransformOrigin="-0.043,0.488" Height="765" VerticalAlignment="Top">
                     <StackPanel.Background>
                         <ImageBrush ImageSource="/dermaco_background_image.jpg" />
                     </StackPanel.Background>
                     <TextBlock
-                        Width="630"
-                        Height="31"
-                        Margin="0,0,0,5"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        FontWeight="Bold"><Run Text="Search and Filter:" /></TextBlock>
+                            Width="630"
+                            Height="31"
+                            Margin="0,0,0,5"
+                            HorizontalAlignment="Left"
+                            FontWeight="Bold" FontFamily="Calisto MT" FontSize="20" FontStyle="Italic"><Run Text="Search and Filter:" /></TextBlock>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="6*" />
@@ -421,68 +408,82 @@
                             <ColumnDefinition Width="24*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            Grid.ColumnSpan="2"
-                            Margin="5,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Foreground="Gray"
-                            Text="YourPlaceholderTextHere" />
+                                Grid.ColumnSpan="2"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Foreground="Gray"
+                                Text="YourPlaceholderTextHere" />
                         <TextBox
-                            x:Name="SearchTextBox"
-                            Grid.ColumnSpan="3"
-                            Height="18"
-                            VerticalAlignment="Center" />
+                                x:Name="SearchTextBox"
+                                Grid.ColumnSpan="3"
+                                Height="18"
+                                VerticalAlignment="Center" />
                     </Grid>
                     <ComboBox
-                        x:Name="FilterComboBox"
-                        Height="30"
-                        Margin="0,0,0,5">
+                            x:Name="FilterComboBox"
+                            Height="30"
+                            Margin="0,0,0,5">
                         <ComboBoxItem Content="Filter by Name" />
                         <ComboBoxItem Content="Filter by Email" />
                     </ComboBox>
                     <Button
-                        Height="25"
-                        Click="ApplyFilter_Click"
-                        Content="Search" />
+                            Height="25"
+                            Click="ApplyFilter_Click"
+                            Content="Search" />
                     <Button
-                        Height="25"
-                        Click="ClearFilter_Click"
-                        Content="Clear" />
+                            Height="25"
+                            Click="ClearFilter_Click"
+                            Content="Clear" />
                     <DataGrid
-                        x:Name="AppointmentDataGrid"
-                        Height="160"
-                        AutoGenerateColumns="True" />
+                            x:Name="AppointmentDataGrid"
+                            Height="160"
+                            AutoGenerateColumns="True" />
+                    <Grid Height="100"/>
                 </StackPanel>
                 <TextBlock
-                    Width="208"
-                    Height="35"
-                    Margin="0,9,0,0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Top"
-                    FontSize="20"
-                    FontWeight="Bold"
-                    Text="Dermaco Skin Clinic"
-                    TextWrapping="Wrap" />
+                        Width="983"
+                        Height="235"
+                        Margin="0,-6,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        FontSize="22"
+                        TextWrapping="Wrap" FontStyle="Italic" FontFamily="Matura MT Script Capitals" FontWeight="Bold" Foreground="#FFDA1871" >
+                    <TextBlock.Background>
+                        <ImageBrush ImageSource="/profile logo.jpg"/>
+                    </TextBlock.Background>
+                </TextBlock>
                 <Button
-                    Width="64"
-                    Margin="546,39,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Click="Button_Click"
-                    Content="About Us" />
+                        Width="60"
+                        Margin="565,189,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Button_Click"
+                        Content="About Us" Height="30" />
                 <Button
-                    Width="70"
-                    Margin="645,39,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Click="Button_Click_1"
-                    Content="Help" />
+                        Width="65"
+                        Margin="635,189,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="Button_Click_1"
+                        Content="Help" Height="30" />
                 <Button
-                    Width="65"
-                    Margin="755,39,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Exit" />
+                        Width="65"
+                        Margin="710,189,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Content="Logout" Height="30" Click="Button_Click_2" />
+                <Button x:Name="ProfileButton" Width="65" Height="50" Margin="0,169,28,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="ProfileButton_Click" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image Width="19" Height="26" Source="C:\Users\Sumat\Downloads\my-profile-icon-clipart-2.jpg" />
+                </Button>
             </Grid>
         </ScrollViewer>
     </ScrollViewer>

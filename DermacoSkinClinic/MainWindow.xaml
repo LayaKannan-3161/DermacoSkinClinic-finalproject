@@ -7,33 +7,38 @@
             <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" MinHeight="6.497" />
+            <RowDefinition Height="Auto" MinHeight="216.8" />
+            <RowDefinition Height="0*" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Image Source="/ProfileLogo.jpg" Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <StackPanel Grid.Row="2" Margin="20">
+        <TextBlock
+            Width="983"
+            Height="235"
+            Margin="0,-6,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="22"
+            TextWrapping="Wrap" FontStyle="Italic" FontFamily="Matura MT Script Capitals" FontWeight="Bold" Foreground="#FFDA1871" >
+            <TextBlock.Background>
+                <ImageBrush ImageSource="/profile logo.jpg"/>
+            </TextBlock.Background>
+        </TextBlock>
+
+        <StackPanel Grid.Row="2" Margin="170,118,0,21">
             <StackPanel.Background>
                 <ImageBrush />
             </StackPanel.Background>
-            <Label Content="Username" HorizontalAlignment="Center"/>
-            <TextBox x:Name="txtUsername" Width="200" BorderBrush="#FFABACB3"/>
+            <Label Content="Username:" HorizontalAlignment="Center" Width="210" FontWeight="Bold"/>
+            <TextBox x:Name="txtUsername" Width="200" BorderBrush="#FFABACB3" Height="25"/>
 
-            <Label Content="Password:" HorizontalAlignment="Center" />
-            <PasswordBox x:Name="txtPassword" Width="200" BorderBrush="#FFABACB3" HorizontalAlignment="Center" />
-            <Grid Margin="0,10,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="210"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>
-            <Button Content="Login" Click="LoginButton_Click" Width="200" Height="25" Margin="0,0,0,0"/>
+            <Label Content="Password:" HorizontalAlignment="Center" Width="210" FontWeight="Bold" />
+            <PasswordBox x:Name="txtPassword" Width="200" BorderBrush="#FFABACB3" HorizontalAlignment="Center" Height="23" />
 
-            <Button Content="Cancel" Click="Logincancel_Click" Width="200" Margin="0,10,0,0"/>
+            <Button Content="Login" Click="LoginButton_Click" Width="202" Margin="0,10,0,0" Height="25" FontWeight="Bold"/>
+            <Button Content="Cancel" Click="Logincancel_Click" Width="202" Margin="0,10,0,0" Height="27" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>

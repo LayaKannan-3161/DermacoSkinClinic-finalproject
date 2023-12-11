@@ -20,6 +20,9 @@
 
         <!--  Display user information  -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+            </StackPanel.Background>
             <Image Source="C:\Users\Sumat\Downloads\Profile_Image.png" Width="100" Height="100" Margin="0,0,80,20"/>
             <!--  Apply the style to remove the border  -->
             <TextBox
