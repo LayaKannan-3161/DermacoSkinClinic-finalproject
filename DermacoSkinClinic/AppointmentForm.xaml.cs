@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Xml.Serialization;
 
 namespace DermacoSkinClinic
@@ -89,7 +88,7 @@ namespace DermacoSkinClinic
         }
 
         private void SubmitAppointment_Click(object sender, RoutedEventArgs e)
-        {
+        {     
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
             string email = EmailTextBox.Text;
@@ -125,6 +124,24 @@ namespace DermacoSkinClinic
                 return;
             }
 
+            if (!IsValidCreditCardNumber(creditCardNumber))
+            {
+                MessageBox.Show("Please enter a valid 16-digit numeric credit card number.", "Invalid Credit Card Number", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!IsValidInsuranceNumber(insuranceNumber))
+            {
+                MessageBox.Show("Please enter a valid 10-digit numeric insurance number.", "Invalid Insurance Number", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!IsValidCanadianPostalCode(PostalCodeTextBox.Text))
+            {
+                MessageBox.Show("Please enter a valid Canadian postal code.", "Invalid Postal Code", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (!TermsCheckBox.IsChecked.GetValueOrDefault())
             {
                 MessageBox.Show("Please accept the terms and conditions.", "Terms and Conditions", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -141,12 +158,92 @@ namespace DermacoSkinClinic
                 AppointmentTime = selectedTime,
             };
             Appointments.Add(newAppointment);
+            // Display user information in the UI
+            DisplayUserProfile(newAppointment);
+
             // Save appointments after adding a new one
             SaveAppointments();
 
             // Clear form fields
             ClearFormFields();
         }
+        private void ProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the selected appointment or user information
+            //Appointment selectedAppointment = AppointmentDataGrid.SelectedItem as Appointment;
+
+            //if (selectedAppointment != null)
+            //{
+            UserProfilePage userProfilePage = new UserProfilePage();
+
+            userProfilePage.Show();
+            // userProfilePage.UserNameTextBox.Text = $"Name: {selectedAppointment.FirstName} {selectedAppointment.LastName}";
+            // userProfilePage.EmailTextBox.Text = $"Email: {selectedAppointment.Email}";
+            //  userProfilePage.PhoneTextBox.Text = $"Phone: {selectedAppointment.Phone}";
+
+            this.Close();
+            //}
+        }
+
+
+        private void DisplayUserProfile(Appointment appointment)
+        {
+
+
+            // Assuming you have TextBlock controls named FirstNameTextBlock, LastNameTextBlock, PhoneTextBlock, and EmailTextBlock in your XAML
+            FirstNameTextBox.Text = appointment.FirstName;
+            LastNameTextBox.Text = appointment.LastName;
+            PhoneTextBox.Text = appointment.Phone; // Use the appropriate property from your Appointment class
+            EmailTextBox.Text = appointment.Email;
+        }
+
+        private bool IsValidInsuranceNumber(string insuranceNumber)
+        {
+            if (string.IsNullOrWhiteSpace(insuranceNumber))
+            {
+                return false;
+            }
+
+            // Check if the insurance number contains only numeric characters
+            if (!insuranceNumber.All(char.IsDigit))
+            {
+                return false;
+            }
+
+            // Check if the insurance number is exactly 10 digits long
+            return insuranceNumber.Length == 10;
+        }
+
+        private bool IsValidCanadianPostalCode(string postalCode)
+        {
+            if (string.IsNullOrWhiteSpace(postalCode))
+            {
+                return false;
+            }
+
+            // Canadian postal code regex pattern
+            string pattern = @"^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ][ -]?\d[ABCEGHJKLMNPRSTVWXYZ]\d$";
+
+            return System.Text.RegularExpressions.Regex.IsMatch(postalCode, pattern);
+        }
+
+        private bool IsValidCreditCardNumber(string creditCardNumber)
+        {
+            if (string.IsNullOrWhiteSpace(creditCardNumber))
+            {
+                return false;
+            }
+
+            // Check if the credit card number contains only numeric characters
+            if (!creditCardNumber.All(char.IsDigit))
+            {
+                return false;
+            }
+
+            // Check if the credit card number is exactly 16 digits long
+            return creditCardNumber.Length == 16;
+        }
+
         private void ApplyFilter_Click(object sender, RoutedEventArgs e)
         {
             string searchText = SearchTextBox.Text.Trim();
@@ -176,35 +273,6 @@ namespace DermacoSkinClinic
                 }
             }
         }
-
-
-
-
-
-        /* private void ApplyFilter_Click(object sender, RoutedEventArgs e)
-         {
-             string searchText = SearchTextBox.Text;
-             string filterOption = FilterComboBox.SelectedItem?.ToString();
-
-             if (filterOption == "Filter by Name")
-             {
-                 var filteredAppointments = Appointments.Where(appointment =>
-                     appointment.FirstName.Contains(searchText) || appointment.LastName.Contains(searchText)).ToList();
-
-                 AppointmentDataGrid.ItemsSource = filteredAppointments;
-             }
-             else if (filterOption == "Filter by Email")
-             {
-                 var filteredAppointments = Appointments.Where(appointment =>
-                     appointment.Email.Contains(searchText)).ToList();
-
-                 AppointmentDataGrid.ItemsSource = filteredAppointments;
-             }
-             else
-             {
-                 AppointmentDataGrid.ItemsSource = Appointments;
-             }
-         }*/
 
         private void ClearFilter_Click(object sender, RoutedEventArgs e)
         {
@@ -279,6 +347,7 @@ namespace DermacoSkinClinic
             public DateTime AppointmentDate { get; set; }
             public string AppointmentTime { get; set; }
             public string Comments { get; set; } = string.Empty;
+            public string Phone { get; set; } = string.Empty;
         }
 
         private void LastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -289,6 +358,18 @@ namespace DermacoSkinClinic
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+       private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 win = new Window1();
+            win.Show();
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
