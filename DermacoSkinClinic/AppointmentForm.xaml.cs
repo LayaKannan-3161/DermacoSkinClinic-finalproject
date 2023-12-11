@@ -100,6 +100,7 @@ namespace DermacoSkinClinic
             string paymentMode = PaymentModeComboBox.SelectedItem?.ToString();
             string creditCardNumber = CreditCardNumberTextBox.Text;
 
+
             if (string.IsNullOrWhiteSpace(firstName) || !IsValidName(firstName))
             {
                 MessageBox.Show("Please enter a valid first name.", "Invalid First Name", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -305,6 +306,9 @@ namespace DermacoSkinClinic
             PhoneTextBox.Clear();
             PostalCodeTextBox.Clear();
             CommentsTextBox.Clear();
+            InsuranceNumberTextBox.Clear();
+            PaymentModeComboBox.SelectedIndex = -1;
+            CreditCardNumberTextBox.Clear();
             ProcedureComboBox.SelectedIndex = -1;
             EmailContactCheckBox.IsChecked = false;
             PhoneContactCheckBox.IsChecked = false;
