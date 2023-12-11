@@ -40,7 +40,7 @@ namespace DermacoSkinClinic
                 MessageBox.Show("Login successful!");
                 AppointmentForm appointmentForm = new AppointmentForm();
                 appointmentForm.Show();
-
+                this.Close();
             }
         }
         private void HighlightControl(Control control)
