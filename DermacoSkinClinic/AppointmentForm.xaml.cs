@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace DermacoSkinClinic
@@ -94,6 +95,7 @@ namespace DermacoSkinClinic
             string email = EmailTextBox.Text;
             string phone = PhoneTextBox.Text;
             string comments = CommentsTextBox.Text;
+            string consultantname = ConsultantComboBox.Text;
             string selectedTime = AppointmentTimeComboBox.Text;
             bool hasInsurance = InsuranceCheckBox.IsChecked.GetValueOrDefault();
             string insuranceNumber = InsuranceNumberTextBox.Text;
@@ -103,48 +105,63 @@ namespace DermacoSkinClinic
 
             if (string.IsNullOrWhiteSpace(firstName) || !IsValidName(firstName))
             {
+                HighlightInvalidField(FirstNameTextBox);
                 MessageBox.Show("Please enter a valid first name.", "Invalid First Name", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // Validate last name
             if (string.IsNullOrWhiteSpace(lastName) || !IsValidName(lastName))
             {
+                HighlightInvalidField(LastNameTextBox);
                 MessageBox.Show("Please enter a valid last name.", "Invalid Last Name", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // Validate email
             if (!IsValidEmail(email))
             {
+                HighlightInvalidField(EmailTextBox);
                 MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // Validate phone number
             if (!IsValidPhoneNumber(phone))
             {
+                HighlightInvalidField(PhoneTextBox);
                 MessageBox.Show("Please enter a valid Canadian phone number.", "Invalid Phone Number", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // Validate credit card number
             if (!IsValidCreditCardNumber(creditCardNumber))
             {
+                HighlightInvalidField(CreditCardNumberTextBox);
                 MessageBox.Show("Please enter a valid 16-digit numeric credit card number.", "Invalid Credit Card Number", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // Validate insurance number
             if (!IsValidInsuranceNumber(insuranceNumber))
             {
+                HighlightInvalidField(InsuranceNumberTextBox);
                 MessageBox.Show("Please enter a valid 10-digit numeric insurance number.", "Invalid Insurance Number", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // Validate Canadian postal code
             if (!IsValidCanadianPostalCode(PostalCodeTextBox.Text))
             {
+                HighlightInvalidField(PostalCodeTextBox);
                 MessageBox.Show("Please enter a valid Canadian postal code.", "Invalid Postal Code", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            // Validate terms checkbox
             if (!TermsCheckBox.IsChecked.GetValueOrDefault())
             {
+                HighlightInvalidField(TermsCheckBox);
                 MessageBox.Show("Please accept the terms and conditions.", "Terms and Conditions", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
@@ -155,8 +172,10 @@ namespace DermacoSkinClinic
                 LastName = lastName,
                 Email = email,
                 Comments = comments,
+                Phone = phone,
                 AppointmentDate = (DateTime)AppointmentDateTimePicker.SelectedDate,
                 AppointmentTime = selectedTime,
+                ConsultantName = consultantname,
             };
             Appointments.Add(newAppointment);
             // Display user information in the UI
@@ -245,6 +264,28 @@ namespace DermacoSkinClinic
             return creditCardNumber.Length == 16;
         }
 
+        private void HighlightInvalidField(Control control)
+        {
+            // Highlight the invalid field by setting the border color to red
+            control.BorderBrush = Brushes.Red;
+            control.BorderThickness = new Thickness(2);
+        }
+
+        private void ClearInvalidFieldHighlights()
+        {
+            // Clear highlighting for all fields
+            FirstNameTextBox.ClearValue(BorderBrushProperty);
+            LastNameTextBox.ClearValue(BorderBrushProperty);
+            EmailTextBox.ClearValue(BorderBrushProperty);
+            PhoneTextBox.ClearValue(BorderBrushProperty);
+            CreditCardNumberTextBox.ClearValue(BorderBrushProperty);
+            InsuranceNumberTextBox.ClearValue(BorderBrushProperty);
+            PostalCodeTextBox.ClearValue(BorderBrushProperty);
+            TermsCheckBox.ClearValue(BorderBrushProperty);
+            ConsultantComboBox.ClearValue(BorderBrushProperty);
+            // Add other fields as needed
+        }
+
         private void ApplyFilter_Click(object sender, RoutedEventArgs e)
         {
             string searchText = SearchTextBox.Text.Trim();
@@ -306,6 +347,7 @@ namespace DermacoSkinClinic
             PhoneTextBox.Clear();
             PostalCodeTextBox.Clear();
             CommentsTextBox.Clear();
+            ConsultantComboBox.SelectedIndex = -1;
             InsuranceNumberTextBox.Clear();
             PaymentModeComboBox.SelectedIndex = -1;
             CreditCardNumberTextBox.Clear();
@@ -352,6 +394,7 @@ namespace DermacoSkinClinic
             public string AppointmentTime { get; set; }
             public string Comments { get; set; } = string.Empty;
             public string Phone { get; set; } = string.Empty;
+            public string ConsultantName { get; set; } = string.Empty;
         }
 
         private void LastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
