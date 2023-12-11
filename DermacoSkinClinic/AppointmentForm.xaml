@@ -5,7 +5,7 @@
     Title="Dermaco Clinic Appointment"
     Width="900"
     Height="900"
-    Background="White">
+    Background="White" WindowState="Maximized">
     <Window.Resources>
         <ImageBrush x:Key="BackgroundBrush" ImageSource="/DermacoSkinClinic;component/dermaco_background_image.jpg" />
     </Window.Resources>

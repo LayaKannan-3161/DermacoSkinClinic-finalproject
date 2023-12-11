@@ -88,7 +88,7 @@ namespace DermacoSkinClinic
         }
 
         private void SubmitAppointment_Click(object sender, RoutedEventArgs e)
-        {     
+        {
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
             string email = EmailTextBox.Text;
@@ -99,6 +99,7 @@ namespace DermacoSkinClinic
             string insuranceNumber = InsuranceNumberTextBox.Text;
             string paymentMode = PaymentModeComboBox.SelectedItem?.ToString();
             string creditCardNumber = CreditCardNumberTextBox.Text;
+
 
             if (string.IsNullOrWhiteSpace(firstName) || !IsValidName(firstName))
             {
@@ -246,26 +247,31 @@ namespace DermacoSkinClinic
 
         private void ApplyFilter_Click(object sender, RoutedEventArgs e)
         {
-            string searchText = SearchTextBox.Text;
-            string filterOption = FilterComboBox.SelectedItem?.ToString();
+            string searchText = SearchTextBox.Text.Trim();
 
-            if (filterOption == "Filter by Name")
+            // Use SelectedItem directly, no need for ItemsSource or data binding
+            if (FilterComboBox.SelectedItem is ComboBoxItem selectedFilterItem)
             {
-                var filteredAppointments = Appointments.Where(appointment =>
-                    appointment.FirstName.Contains(searchText) || appointment.LastName.Contains(searchText)).ToList();
+                string filterOption = selectedFilterItem.Content.ToString();
 
-                AppointmentDataGrid.ItemsSource = filteredAppointments;
-            }
-            else if (filterOption == "Filter by Email")
-            {
-                var filteredAppointments = Appointments.Where(appointment =>
-                    appointment.Email.Contains(searchText)).ToList();
+                if (filterOption == "Filter by Name")
+                {
+                    var filteredAppointments = Appointments.Where(appointment =>
+                        appointment.FirstName.Contains(searchText) || appointment.LastName.Contains(searchText)).ToList();
 
-                AppointmentDataGrid.ItemsSource = filteredAppointments;
-            }
-            else
-            {
-                AppointmentDataGrid.ItemsSource = Appointments;
+                    AppointmentDataGrid.ItemsSource = filteredAppointments;
+                }
+                else if (filterOption == "Filter by Email")
+                {
+                    var filteredAppointments = Appointments.Where(appointment =>
+                        appointment.Email.Contains(searchText)).ToList();
+
+                    AppointmentDataGrid.ItemsSource = filteredAppointments;
+                }
+                else
+                {
+                    AppointmentDataGrid.ItemsSource = Appointments;
+                }
             }
         }
 
@@ -300,6 +306,9 @@ namespace DermacoSkinClinic
             PhoneTextBox.Clear();
             PostalCodeTextBox.Clear();
             CommentsTextBox.Clear();
+            InsuranceNumberTextBox.Clear();
+            PaymentModeComboBox.SelectedIndex = -1;
+            CreditCardNumberTextBox.Clear();
             ProcedureComboBox.SelectedIndex = -1;
             EmailContactCheckBox.IsChecked = false;
             PhoneContactCheckBox.IsChecked = false;
@@ -355,11 +364,11 @@ namespace DermacoSkinClinic
             Application.Current.Shutdown();
         }
 
-       private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             Window1 win = new Window1();
             win.Show();
-            
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
