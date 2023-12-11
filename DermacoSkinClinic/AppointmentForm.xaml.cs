@@ -95,6 +95,7 @@ namespace DermacoSkinClinic
             string email = EmailTextBox.Text;
             string phone = PhoneTextBox.Text;
             string comments = CommentsTextBox.Text;
+            string consultantname = ConsultantComboBox.Text;
             string selectedTime = AppointmentTimeComboBox.Text;
             bool hasInsurance = InsuranceCheckBox.IsChecked.GetValueOrDefault();
             string insuranceNumber = InsuranceNumberTextBox.Text;
@@ -171,8 +172,10 @@ namespace DermacoSkinClinic
                 LastName = lastName,
                 Email = email,
                 Comments = comments,
+                Phone = phone,
                 AppointmentDate = (DateTime)AppointmentDateTimePicker.SelectedDate,
                 AppointmentTime = selectedTime,
+                ConsultantName = consultantname,
             };
             Appointments.Add(newAppointment);
             // Display user information in the UI
@@ -279,6 +282,7 @@ namespace DermacoSkinClinic
             InsuranceNumberTextBox.ClearValue(BorderBrushProperty);
             PostalCodeTextBox.ClearValue(BorderBrushProperty);
             TermsCheckBox.ClearValue(BorderBrushProperty);
+            ConsultantComboBox.ClearValue(BorderBrushProperty);
             // Add other fields as needed
         }
 
@@ -343,6 +347,7 @@ namespace DermacoSkinClinic
             PhoneTextBox.Clear();
             PostalCodeTextBox.Clear();
             CommentsTextBox.Clear();
+            ConsultantComboBox.SelectedIndex = -1;
             InsuranceNumberTextBox.Clear();
             PaymentModeComboBox.SelectedIndex = -1;
             CreditCardNumberTextBox.Clear();
@@ -389,6 +394,7 @@ namespace DermacoSkinClinic
             public string AppointmentTime { get; set; }
             public string Comments { get; set; } = string.Empty;
             public string Phone { get; set; } = string.Empty;
+            public string ConsultantName { get; set; } = string.Empty;
         }
 
         private void LastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
