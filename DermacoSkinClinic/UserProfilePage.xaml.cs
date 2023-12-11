@@ -13,6 +13,10 @@ namespace DermacoSkinClinic
 
         // Properties to access UI elements in UserProfilePage.xaml
 
-
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Close the window
+            this.Close();
+        }
     }
 }
