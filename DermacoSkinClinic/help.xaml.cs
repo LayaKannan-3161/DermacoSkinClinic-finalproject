@@ -53,7 +53,7 @@ namespace DermacoSkinClinic
                        
                         break;
                     case "Clinic Manager":
-                        contactEmail = "Name : Ms.Sumathi   Email : Sumi@dermaclinic.com";
+                        contactEmail = "Name : Ms.Sumathi   Email : Sumi@dermaco.com";
                         contactPhone = "Phone No: (456) 345-9856";
                        break;
 

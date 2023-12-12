@@ -1,4 +1,4 @@
-﻿// MainWindow.xaml.cs
+﻿
 using DermacoSkinClinic;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,9 +7,9 @@ using System.Windows.Media;
 
 namespace DermacoSkinClinic
 {
-    public partial class MainWindow : Window
+    public partial class mainwindow : Window
     {
-        public MainWindow()
+        public mainwindow()
         {
             InitializeComponent();
         }

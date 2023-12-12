@@ -17,9 +17,9 @@ namespace DermacoSkinClinic
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Aboutus : Window
     {
-        public Window1()
+        public Aboutus()
         {
             InitializeComponent();
         }

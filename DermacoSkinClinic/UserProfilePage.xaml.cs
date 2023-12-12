@@ -16,7 +16,10 @@ namespace DermacoSkinClinic
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             // Close the window
-            this.Close();
-        }
+            
+           AppointmentForm frm = new AppointmentForm();
+            frm.Show();
+            Close();
+         }
     }
 }
