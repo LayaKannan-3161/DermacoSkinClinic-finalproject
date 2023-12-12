@@ -20,7 +20,7 @@
 
         <!--  Display user information  -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0">
-            <Image Source="/ProfileLogo.jpg" Width="100" Height="100" Margin="0,0,80,20"/>
+            <Image Source="/user profilelogo.jpg" Width="130" Height="100" Margin="0,0,80,20"/>
             <!--  Apply the style to remove the border  -->
             <TextBox
                 Margin="0,0,0,20"

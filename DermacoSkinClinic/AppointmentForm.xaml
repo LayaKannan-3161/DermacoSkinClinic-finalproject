@@ -482,7 +482,19 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Button.RenderTransform>
-                    <Image Width="19" Height="26" Source="C:\Users\Sumat\Downloads\my-profile-icon-clipart-2.jpg" />
+                    <Image Width="55" Height="45" Source="/user profilelogo.jpg" RenderTransformOrigin="0.5,0.5" >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="/user profilelogo.jpg"/>
+                        </Image.OpacityMask>
+                    </Image>
                 </Button>
             </Grid>
         </ScrollViewer>
