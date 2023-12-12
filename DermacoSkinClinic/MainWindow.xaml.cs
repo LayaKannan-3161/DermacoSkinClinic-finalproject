@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
-namespace YourNamespace
+namespace DermacoSkinClinic
 {
     public partial class MainWindow : Window
     {
@@ -40,7 +40,7 @@ namespace YourNamespace
                 MessageBox.Show("Login successful!");
                 AppointmentForm appointmentForm = new AppointmentForm();
                 appointmentForm.Show();
-
+                this.Close();
             }
         }
         private void HighlightControl(Control control)
@@ -58,5 +58,3 @@ namespace YourNamespace
         }
     }
 }
-
-

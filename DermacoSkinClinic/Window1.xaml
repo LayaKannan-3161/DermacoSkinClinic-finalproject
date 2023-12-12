@@ -5,15 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DermacoSkinClinic"
         mc:Ignorable="d"
-        Title="About Us" Height="450" Width="800">
+        Title="About Us" Height="450" Width="800" WindowState="Maximized">
     <Grid x:Name="VV">
+        <Grid.Background>
+            <ImageBrush ImageSource="/dermaco_background_image.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="53*"/>
             <ColumnDefinition Width="21*"/>
             <ColumnDefinition Width="19*"/>
             <ColumnDefinition Width="67*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Height="414" Margin="45,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="715" Grid.ColumnSpan="4"><Run/><LineBreak/><Run FontWeight="Bold" Text="About Dermaco Skin Clinic"/><LineBreak/><Run Text="Welcome to Dermaco Skin Clinic, where beauty meets innovation. At Dermaco Skin Clinic, we are committed to helping you achieve the best version of yourself through advanced and personalized skincare solutions."/><LineBreak/><Run FontWeight="Bold"/><LineBreak/><Run FontWeight="Bold" Text="Why Choose Dermaco Skin Clinic?"/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Expertise"/><Run Text=":"/><LineBreak/><Run Text="Our team consists of experienced and highly trained professionals dedicated to delivering exceptional results."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Advanced Technology:"/><LineBreak/><Run Text="We invest in the latest technologies to provide you with cutting-edge treatments for optimal efficacy and safety."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Personalized Approach:"/><LineBreak/><Run Text="Every individual is unique, and so are their skincare needs. We take a personalized approach to address your specific concerns and goals."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Client Satisfaction:"/><LineBreak/><Run Text="Your satisfaction is our priority. We strive to exceed your expectations and provide a positive and comfortable experience."/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="414" Margin="45,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="715" Grid.ColumnSpan="4">
+            <TextBlock.Background>
+                <ImageBrush/>
+            </TextBlock.Background><Run/><LineBreak/><Run FontWeight="Bold" Text="About Dermaco Skin Clinic"/><LineBreak/><Run Text="Welcome to Dermaco Skin Clinic, where beauty meets innovation. At Dermaco Skin Clinic, we are committed to helping you achieve the best version of yourself through advanced and personalized skincare solutions."/><LineBreak/><Run FontWeight="Bold"/><LineBreak/><Run FontWeight="Bold" Text="Why Choose Dermaco Skin Clinic?"/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Expertise"/><Run Text=":"/><LineBreak/><Run Text="Our team consists of experienced and highly trained professionals dedicated to delivering exceptional results."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Advanced Technology:"/><LineBreak/><Run Text="We invest in the latest technologies to provide you with cutting-edge treatments for optimal efficacy and safety."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Personalized Approach:"/><LineBreak/><Run Text="Every individual is unique, and so are their skincare needs. We take a personalized approach to address your specific concerns and goals."/><LineBreak/><Run/><LineBreak/><Run FontWeight="Bold" Text="Client Satisfaction:"/><LineBreak/><Run Text="Your satisfaction is our priority. We strive to exceed your expectations and provide a positive and comfortable experience."/></TextBlock>
 
     </Grid>
 </Window>

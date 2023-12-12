@@ -8,14 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ACNE add.jpeg" />
+    <None Remove="Add image.jpeg" />
+    <None Remove="Appointmentimage.jpeg" />
+    <None Remove="background.jpeg" />
     <None Remove="dermaco_background_image.jpg" />
+    <None Remove="profile logo.jpg" />
     <None Remove="ProfileLogo.jpg" />
+    <None Remove="WhatsApp Image 2023-12-10 at 3.40.54 PM-2.jpeg" />
+    <None Remove="WhatsApp Image 2023-12-10 at 5.03.23 PM-2.jpeg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="ACNE add.jpeg" />
+    <Resource Include="Add image.jpeg" />
+    <Resource Include="Appointmentimage.jpeg" />
+    <Resource Include="background.jpeg" />
     <Resource Include="dermaco_background_image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="profile logo.jpg" />
     <Resource Include="ProfileLogo.jpg" />
   </ItemGroup>
 
