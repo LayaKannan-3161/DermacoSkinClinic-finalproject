@@ -378,20 +378,11 @@
                             Margin="0,10,0,0"
                             Click="SubmitAppointment_Click"
                             Content="Edit Appointment" />
-                    <Button
-                            Height="25"
-                            Margin="0,10,0,0"
-                            Click="SubmitAppointment_Click"
-                            Content="Cancel Appointment" />
-                    <Button
-                            Height="25"
-                            Margin="0,10,0,0"
-                            Click="Exit_Click"
-                            Content="Exit" />
+                 
                 </StackPanel>
 
 
-                <StackPanel Margin="305,229,-12,0" RenderTransformOrigin="-0.043,0.488" Height="765" VerticalAlignment="Top">
+                <StackPanel Margin="305,229,-192,0" RenderTransformOrigin="-0.043,0.488" Height="765" VerticalAlignment="Top">
                     <StackPanel.Background>
                         <ImageBrush ImageSource="/dermaco_background_image.jpg" />
                     </StackPanel.Background>
@@ -442,7 +433,7 @@
                     <Grid Height="100"/>
                 </StackPanel>
                 <TextBlock
-                        Width="983"
+                        Width="1617"
                         Height="235"
                         Margin="0,-6,0,0"
                         HorizontalAlignment="Center"
@@ -472,7 +463,7 @@
                         Margin="710,189,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Content="Logout" Height="30" Click="Button_Click_2" />
+                        Content="Logout" Height="30" Click="Exit_Click" />
                 <Button x:Name="ProfileButton" Width="65" Height="50" Margin="0,169,28,0" HorizontalAlignment="Right" VerticalAlignment="Top" Click="ProfileButton_Click" RenderTransformOrigin="0.5,0.5">
                     <Button.RenderTransform>
                         <TransformGroup>
