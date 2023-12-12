@@ -15,6 +15,7 @@
     <None Remove="dermaco_background_image.jpg" />
     <None Remove="profile logo.jpg" />
     <None Remove="ProfileLogo.jpg" />
+    <None Remove="user profilelogo.jpg" />
     <None Remove="WhatsApp Image 2023-12-10 at 3.40.54 PM-2.jpeg" />
     <None Remove="WhatsApp Image 2023-12-10 at 5.03.23 PM-2.jpeg" />
   </ItemGroup>
@@ -28,7 +29,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="profile logo.jpg" />
-    <Resource Include="ProfileLogo.jpg" />
+    <Resource Include="user profilelogo.jpg" />
   </ItemGroup>
 
 </Project>
