@@ -1,0 +1,45 @@
+﻿<Window x:Class="DermacoSkinClinic.help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DermacoSkinClinic"
+        mc:Ignorable="d"
+        Title="Dermaco Skin Clinic - Help" Height="550" Width="800">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Dermaco skin Clinic App Help" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"/>
+
+            <TextBlock Text="1. Overview" FontWeight="Bold" Margin="0,0,0,5"/>
+            <TextBlock Text="   This application helps manage patient information and appointments for a dermatology clinic." TextWrapping="Wrap"/>
+
+            <TextBlock Text="2. Patient Information" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="   - Use the 'Patients' tab to view and manage patient information." TextWrapping="Wrap"/>
+            <TextBlock Text="   - Click on a patient's name to view detailed information." TextWrapping="Wrap"/>
+
+            <TextBlock Text="3. Appointments" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="   - Schedule and manage appointments in the 'Appointments' tab." TextWrapping="Wrap"/>
+            <TextBlock Text="   - Use the calendar to navigate through appointments." TextWrapping="Wrap"/>
+
+            <TextBlock Text="4. Reports" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="   - Generate reports for patient data and appointments." TextWrapping="Wrap"/>
+
+            <TextBlock Text="5. Support" FontWeight="Bold" Margin="0,10,0,5"/>
+            <TextBlock Text="   - For additional support, contact our helpdesk at support@dermaclinic.com." TextWrapping="Wrap"/>
+            <TextBox
+        TextWrapping="Wrap" Text="Select for support center details" Width="200" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontWeight="Bold" TextDecorations="Underline"/>
+
+            <!-- ComboBox for selecting contacts -->
+            <ComboBox x:Name="ContactComboBox" Width="224" SelectionChanged="ContactComboBox_SelectionChanged">
+                <ComboBoxItem Content="Manager"/>
+                <ComboBoxItem Content="Facility Supervisor"/>
+                <ComboBoxItem Content="Office Manager"/>
+                <ComboBoxItem Content="Customer support Manager"/>
+                <ComboBoxItem Content="Clinic Manager"/>
+            </ComboBox>
+            <TextBlock x:Name="ContactInfoTextBlock" TextWrapping="Wrap" Height="64"/>
+
+            <Button Content="Close" Width="80" Height="25" Margin="0,20,0,0" HorizontalAlignment="Right" Click="CloseButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

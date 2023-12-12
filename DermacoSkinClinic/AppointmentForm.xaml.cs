@@ -404,7 +404,15 @@ namespace DermacoSkinClinic
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            // Check the user's choice
+            if (result == MessageBoxResult.Yes)
+            {
+                // Perform logout actions here
+                // For simplicity, we'll just close the application
+                Application.Current.Shutdown();
+            }
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -416,7 +424,8 @@ namespace DermacoSkinClinic
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            help hel = new help();
+            hel.Show();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
