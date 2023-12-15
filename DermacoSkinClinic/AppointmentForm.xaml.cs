@@ -23,13 +23,26 @@ namespace DermacoSkinClinic
             AppointmentDataGrid.ItemsSource = Appointments;
         }
 
-        private void SaveAppointments()
+        public void SaveAppointments(ObservableCollection<Appointment> appointments)
         {
-            dataAccess.SaveAppointments(Appointments);
+            try
+            {
+                using (var writer = new StreamWriter(AppointmentDataAccess.XmlFilePath))
+                {
+                    var serializer = new XmlSerializer(typeof(ObservableCollection<Appointment>));
+                    serializer.Serialize(writer, appointments);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving appointments: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
         public class AppointmentDataAccess
         {
             public const string XmlFilePath = "Appointments.xml";
+
 
             public ObservableCollection<Appointment> LoadAppointments()
             {
@@ -88,6 +101,7 @@ namespace DermacoSkinClinic
             }
         }
 
+
         private void SubmitAppointment_Click(object sender, RoutedEventArgs e)
         {
             string firstName = FirstNameTextBox.Text;
@@ -101,7 +115,6 @@ namespace DermacoSkinClinic
             string insuranceNumber = InsuranceNumberTextBox.Text;
             string paymentMode = PaymentModeComboBox.SelectedItem?.ToString();
             string creditCardNumber = CreditCardNumberTextBox.Text;
-
 
             if (string.IsNullOrWhiteSpace(firstName) || !IsValidName(firstName))
             {
@@ -171,22 +184,23 @@ namespace DermacoSkinClinic
                 FirstName = firstName,
                 LastName = lastName,
                 Email = email,
-                Comments = comments,
                 Phone = phone,
                 AppointmentDate = (DateTime)AppointmentDateTimePicker.SelectedDate,
                 AppointmentTime = selectedTime,
                 ConsultantName = consultantname,
+                ProcedureInterested = ProcedureComboBox.SelectedItem?.ToString() ?? string.Empty,
             };
             Appointments.Add(newAppointment);
             // Display user information in the UI
             DisplayUserProfile(newAppointment);
 
             // Save appointments after adding a new one
-            SaveAppointments();
+            SaveAppointments(Appointments); // Pass the Appointments collection
 
             // Clear form fields
             ClearFormFields();
         }
+
         private void ProfileButton_Click(object sender, RoutedEventArgs e)
         {
             // Get the selected appointment or user information
@@ -205,11 +219,8 @@ namespace DermacoSkinClinic
             //}
         }
 
-
         private void DisplayUserProfile(Appointment appointment)
         {
-
-
             // Assuming you have TextBlock controls named FirstNameTextBlock, LastNameTextBlock, PhoneTextBlock, and EmailTextBlock in your XAML
             FirstNameTextBox.Text = appointment.FirstName;
             LastNameTextBox.Text = appointment.LastName;
@@ -318,10 +329,13 @@ namespace DermacoSkinClinic
 
         private void ClearFilter_Click(object sender, RoutedEventArgs e)
         {
-            // Clear filter logic, if needed
-            AppointmentDataGrid.ItemsSource = Appointments;
+            // Clear filter logic
             FilterComboBox.SelectedIndex = -1;
             SearchTextBox.Text = string.Empty;
+
+            // Reset the data grid to show all appointments
+            AppointmentDataGrid.ItemsSource = null;
+            AppointmentDataGrid.ItemsSource = Appointments;
         }
 
         private void TermsCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -390,16 +404,15 @@ namespace DermacoSkinClinic
             public string FirstName { get; set; } = string.Empty;
             public string LastName { get; set; } = string.Empty;
             public string Email { get; set; } = string.Empty;
-            public DateTime AppointmentDate { get; set; }
+            public DateTime AppointmentDate { get; set; } = DateTime.MinValue; // or another default value
             public string AppointmentTime { get; set; }
-            public string Comments { get; set; } = string.Empty;
+            public string ProcedureInterested { get; set; } = string.Empty; // Add this property
             public string Phone { get; set; } = string.Empty;
             public string ConsultantName { get; set; } = string.Empty;
         }
 
         private void LastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -412,14 +425,12 @@ namespace DermacoSkinClinic
                 // For simplicity, we'll just close the application
                 Application.Current.Shutdown();
             }
-           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Aboutus win = new Aboutus();
             win.Show();
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -430,12 +441,8 @@ namespace DermacoSkinClinic
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
         }
 
-        private void LoadData_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
-}
+    }

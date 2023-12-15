@@ -431,18 +431,17 @@
             Click="ClearFilter_Click"
             Content="Clear" Width="156" />
 
-                        <!-- Load Data Button -->
-                        <Button
-            Height="25"
-            Click="LoadData_Click"
-            Content="Display" Width="170" />
                     </StackPanel>
-
-                    <DataGrid
-                            x:Name="AppointmentDataGrid"
-                            Height="160"
-                            AutoGenerateColumns="True" />
-                    <Grid Height="100"/>
+                    <DataGrid x:Name="AppointmentDataGrid" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                            <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" />
+                            <DataGridTextColumn Header="Appointment Time" Binding="{Binding AppointmentTime}" />
+                            <DataGridTextColumn Header="Consultant" Binding="{Binding Consultant}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
                 <TextBlock
                         Width="1617"
