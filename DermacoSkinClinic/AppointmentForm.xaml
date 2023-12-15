@@ -19,7 +19,7 @@
                 <!--  Input Section  -->
                 <StackPanel Grid.Column="0" Margin="5,229,588,-117">
                     <StackPanel.Background>
-                        <ImageBrush ImageSource="/dermaco_background_image.jpg" />
+                        <ImageBrush />
                     </StackPanel.Background>
                     <TextBlock
                             Margin="0,0,0,5"
@@ -384,7 +384,7 @@
 
                 <StackPanel Margin="305,229,-192,0" RenderTransformOrigin="-0.043,0.488" Height="765" VerticalAlignment="Top">
                     <StackPanel.Background>
-                        <ImageBrush ImageSource="/dermaco_background_image.jpg" />
+                        <ImageBrush />
                     </StackPanel.Background>
                     <TextBlock
                             Width="630"
@@ -418,14 +418,26 @@
                         <ComboBoxItem Content="Filter by Name" />
                         <ComboBoxItem Content="Filter by Email" />
                     </ComboBox>
-                    <Button
-                            Height="25"
-                            Click="ApplyFilter_Click"
-                            Content="Search" />
-                    <Button
-                            Height="25"
-                            Click="ClearFilter_Click"
-                            Content="Clear" />
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <!-- Search Button -->
+                        <Button
+            Height="25"
+            Click="ApplyFilter_Click"
+            Content="Search" Width="200" />
+
+                        <!-- Clear Button -->
+                        <Button
+            Height="25"
+            Click="ClearFilter_Click"
+            Content="Clear" Width="156" />
+
+                        <!-- Load Data Button -->
+                        <Button
+            Height="25"
+            Click="LoadData_Click"
+            Content="Display" Width="170" />
+                    </StackPanel>
+
                     <DataGrid
                             x:Name="AppointmentDataGrid"
                             Height="160"

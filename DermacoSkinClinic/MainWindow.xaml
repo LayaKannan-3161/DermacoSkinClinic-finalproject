@@ -14,31 +14,44 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock
-            Width="983"
-            Height="235"
+        <!-- Logo Image -->
+        <Image
+            Width="1500"
+            Height="600"
             Margin="0,-6,0,0"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            FontSize="22"
-            TextWrapping="Wrap" FontStyle="Italic" FontFamily="Matura MT Script Capitals" FontWeight="Bold" Foreground="#FFDA1871" >
-            <TextBlock.Background>
-                <ImageBrush ImageSource="/profile logo.jpg"/>
-            </TextBlock.Background>
-        </TextBlock>
+            Source="/profile logo.jpg" VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
-        <StackPanel Grid.Row="2" Margin="170,118,0,21">
+        <!-- add Image on the left side -->
+        <Image
+            Width="642"
+            Source="/Appointmentimage.jpeg" Grid.RowSpan="3" Grid.Row="2" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill" HorizontalAlignment="Right" Margin="0,0,1,-24">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.175"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.629"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Appointmentimage.jpeg" Stretch="UniformToFill"/>
+            </Image.OpacityMask>
+        </Image>
+
+
+        <StackPanel Grid.Row="2" Margin="-275,43,245,-10" Grid.RowSpan="3">
             <StackPanel.Background>
                 <ImageBrush />
             </StackPanel.Background>
-            <Label Content="Username:" HorizontalAlignment="Center" Width="210" FontWeight="Bold"/>
+            <TextBlock Text = "Login to Dermaco Skin Clinic:" HorizontalAlignment="Center" Width="277" FontWeight="Bold" FontSize="18" FontStyle="Italic"/>
+            <Label Content="Username:" HorizontalAlignment="Center" Width="210" FontWeight="Bold" FontSize="14"/>
             <TextBox x:Name="txtUsername" Width="200" BorderBrush="#FFABACB3" Height="25"/>
 
-            <Label Content="Password:" HorizontalAlignment="Center" Width="210" FontWeight="Bold" />
+            <Label Content="Password:" HorizontalAlignment="Center" Width="210" FontWeight="Bold" FontSize="14" />
             <PasswordBox x:Name="txtPassword" Width="200" BorderBrush="#FFABACB3" HorizontalAlignment="Center" Height="23" />
 
-            <Button Content="Login" Click="LoginButton_Click" Width="202" Margin="0,10,0,0" Height="25" FontWeight="Bold"/>
-            <Button Content="Cancel" Click="Logincancel_Click" Width="202" Margin="0,10,0,0" Height="27" FontWeight="Bold"/>
+            <Button Content="Login" Click="LoginButton_Click" Width="202" Margin="0,10,0,0" Height="25" FontWeight="Bold" FontSize="14"/>
+            <Button Content="Cancel" Click="Logincancel_Click" Width="202" Margin="0,10,0,0" Height="27" FontWeight="Bold" FontSize="14"/>
         </StackPanel>
     </Grid>
 </Window>

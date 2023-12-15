@@ -432,5 +432,10 @@ namespace DermacoSkinClinic
         {
 
         }
+
+        private void LoadData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
